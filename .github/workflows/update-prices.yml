@@ -2,7 +2,7 @@ name: Update Whisky Prices
 
 on:
   schedule:
-    - cron: '0 3 * * 1,4' # 매주 월/목 12:00 JST (03:00 UTC)
+    - cron: '0 0 * * *' # 매일 09:00 KST/JST (00:00 UTC)
   workflow_dispatch: # 수동 실행 가능
 
 jobs:
@@ -28,8 +28,9 @@ jobs:
         run: node scripts/update-changi-prices.mjs
         timeout-minutes: 10
 
-      - name: Fetch Japan market prices (Rakuten)
+      - name: Fetch Japan market prices (Rakuten + Yahoo)
         run: node scripts/update-japan-prices.mjs
+        timeout-minutes: 15
 
       - name: Sync data to public
         run: cp data/whiskies.json public/data.json
