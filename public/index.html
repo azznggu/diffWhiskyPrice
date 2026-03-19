@@ -2,739 +2,449 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
-  <title>🥃 위스키 가격 비교 | 창이공항 vs 일본</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>위스키 가격 비교 | 창이공항 vs 일본</title>
   <meta name="description" content="싱가포르 창이공항 면세점 위스키 가격과 일본 시중 최저가를 엔화 기준으로 비교합니다." />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🥃</text></svg>" />
   <style>
     :root {
-      --bg: #0f0f14;
-      --surface: #1a1a24;
-      --card: #22222e;
-      --border: #2e2e3e;
-      --amber: #c8962a;
-      --amber-light: #e8b84b;
-      --amber-dim: rgba(200, 150, 42, 0.15);
-      --green: #4caf7d;
-      --green-dim: rgba(76, 175, 125, 0.12);
-      --red: #e05c5c;
-      --red-dim: rgba(224, 92, 92, 0.12);
-      --text: #f0ece0;
-      --text-sub: #9090a0;
-      --text-muted: #60607a;
-      --radius: 12px;
-      --radius-sm: 8px;
+      --bg: #0c0c10;
+      --surface: #15151c;
+      --card: #1c1c28;
+      --border: #2a2a3a;
+      --amber: #d4a020;
+      --amber-light: #f0c850;
+      --amber-dim: rgba(212,160,32,0.12);
+      --green: #3dba78;
+      --green-dim: rgba(61,186,120,0.10);
+      --red: #e25555;
+      --red-dim: rgba(226,85,85,0.10);
+      --blue: #6ea8fe;
+      --text: #eae6da;
+      --sub: #9090a0;
+      --muted: #55556a;
+      --r: 12px;
+      --rs: 8px;
     }
-
     * { box-sizing: border-box; margin: 0; padding: 0; }
-
     body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      min-height: 100vh;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: var(--bg); color: var(--text);
+      min-height: 100dvh;
       -webkit-font-smoothing: antialiased;
     }
 
-    /* ===== HEADER ===== */
-    .header {
-      background: linear-gradient(135deg, #1a1008 0%, #0f0f14 60%);
+    /* === HEADER === */
+    header {
+      background: linear-gradient(135deg, #1a1308 0%, var(--bg) 70%);
       border-bottom: 1px solid var(--border);
-      padding: 16px;
-      position: sticky;
-      top: 0;
-      z-index: 100;
+      padding: 14px 16px;
+      position: sticky; top: 0; z-index: 100;
     }
-    .header-top {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 8px;
+    .hdr-row { display: flex; align-items: center; justify-content: space-between; }
+    .app-t { font-size: 17px; font-weight: 700; color: var(--amber-light); }
+    .app-st { font-size: 11px; color: var(--sub); margin-top: 1px; }
+    .rate-pill {
+      background: var(--amber-dim); border: 1px solid rgba(212,160,32,0.4);
+      border-radius: 20px; padding: 5px 12px; text-align: center; flex-shrink: 0;
     }
-    .app-title {
-      font-size: 18px;
-      font-weight: 700;
-      color: var(--amber-light);
-      letter-spacing: -0.3px;
+    .rate-v { font-size: 12px; font-weight: 700; color: var(--amber-light); white-space: nowrap; }
+    .rate-d { font-size: 9px; color: var(--muted); display: block; margin-top: 1px; }
+
+    /* === DATA INFO BAR === */
+    .info-bar {
+      display: flex; gap: 6px; padding: 8px 16px; background: var(--surface);
+      border-bottom: 1px solid var(--border); align-items: center; flex-wrap: wrap;
+      font-size: 10px; color: var(--muted);
     }
-    .app-subtitle {
-      font-size: 11px;
-      color: var(--text-sub);
-      margin-top: 1px;
-    }
-    .rate-badge {
-      background: var(--amber-dim);
-      border: 1px solid var(--amber);
-      border-radius: 20px;
-      padding: 4px 12px;
-      font-size: 12px;
-      color: var(--amber-light);
-      font-weight: 600;
-      white-space: nowrap;
-      flex-shrink: 0;
-    }
-    .rate-badge .rate-date {
-      font-size: 10px;
-      color: var(--text-muted);
-      display: block;
-      text-align: center;
-      margin-top: 1px;
+    .info-tag {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 10px; padding: 2px 8px; white-space: nowrap;
     }
 
-    /* ===== STATS BAR ===== */
-    .stats-bar {
-      display: flex;
-      gap: 8px;
-      padding: 10px 16px;
-      background: var(--surface);
-      border-bottom: 1px solid var(--border);
-      overflow-x: auto;
-      scrollbar-width: none;
-    }
-    .stats-bar::-webkit-scrollbar { display: none; }
-    .stat-item {
-      flex-shrink: 0;
-      text-align: center;
-      padding: 6px 12px;
-      background: var(--card);
-      border-radius: var(--radius-sm);
-      border: 1px solid var(--border);
-    }
-    .stat-value {
-      font-size: 13px;
-      font-weight: 700;
-      color: var(--amber-light);
-    }
-    .stat-label {
-      font-size: 10px;
-      color: var(--text-muted);
-      margin-top: 1px;
-    }
+    /* === STATS === */
+    .stats { display: flex; gap: 6px; padding: 10px 16px; background: var(--surface); border-bottom: 1px solid var(--border); overflow-x: auto; scrollbar-width: none; }
+    .stats::-webkit-scrollbar { display: none; }
+    .st-item { flex-shrink: 0; text-align: center; padding: 6px 12px; background: var(--card); border-radius: var(--rs); border: 1px solid var(--border); }
+    .st-v { font-size: 13px; font-weight: 700; color: var(--amber-light); }
+    .st-l { font-size: 9px; color: var(--muted); margin-top: 2px; }
 
-    /* ===== CONTROLS ===== */
-    .controls {
-      padding: 12px 16px;
-      background: var(--surface);
-      border-bottom: 1px solid var(--border);
-      position: sticky;
-      top: 85px;
-      z-index: 90;
-    }
-    .search-wrap {
-      position: relative;
-      margin-bottom: 10px;
-    }
-    .search-icon {
-      position: absolute;
-      left: 10px;
-      top: 50%;
-      transform: translateY(-50%);
-      color: var(--text-muted);
-      font-size: 14px;
-      pointer-events: none;
-    }
+    /* === CONTROLS === */
+    .ctrl { padding: 10px 16px; background: var(--surface); border-bottom: 1px solid var(--border); position: sticky; top: 62px; z-index: 90; }
+    .search-w { position: relative; margin-bottom: 8px; }
+    .search-w::before { content: '🔍'; position: absolute; left: 10px; top: 50%; transform: translateY(-50%); font-size: 13px; pointer-events: none; }
     #search {
-      width: 100%;
-      padding: 9px 12px 9px 32px;
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-sm);
-      color: var(--text);
-      font-size: 14px;
-      outline: none;
-      transition: border-color 0.2s;
+      width: 100%; padding: 8px 12px 8px 32px;
+      background: var(--card); border: 1px solid var(--border); border-radius: var(--rs);
+      color: var(--text); font-size: 14px; outline: none;
     }
-    #search::placeholder { color: var(--text-muted); }
+    #search::placeholder { color: var(--muted); }
     #search:focus { border-color: var(--amber); }
 
-    .filter-row {
-      display: flex;
-      gap: 6px;
-      overflow-x: auto;
-      scrollbar-width: none;
-      padding-bottom: 2px;
+    .filter-r { display: flex; gap: 5px; overflow-x: auto; scrollbar-width: none; }
+    .filter-r::-webkit-scrollbar { display: none; }
+    .fbtn {
+      flex-shrink: 0; padding: 4px 10px; border-radius: 16px;
+      border: 1px solid var(--border); background: transparent;
+      color: var(--sub); font-size: 11px; font-weight: 500; cursor: pointer;
     }
-    .filter-row::-webkit-scrollbar { display: none; }
+    .fbtn.on { background: var(--amber); border-color: var(--amber); color: #0c0c10; font-weight: 700; }
 
-    .filter-btn {
-      flex-shrink: 0;
-      padding: 5px 12px;
-      border-radius: 20px;
-      border: 1px solid var(--border);
-      background: transparent;
-      color: var(--text-sub);
-      font-size: 12px;
-      font-weight: 500;
-      cursor: pointer;
-      transition: all 0.15s;
-      white-space: nowrap;
-    }
-    .filter-btn.active {
-      background: var(--amber);
-      border-color: var(--amber);
-      color: #0f0f14;
-      font-weight: 700;
-    }
-    .filter-btn:not(.active):active {
-      background: var(--amber-dim);
-    }
-
-    .sort-row {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      margin-top: 10px;
-    }
-    .sort-label {
-      font-size: 11px;
-      color: var(--text-muted);
-      flex-shrink: 0;
-    }
+    .sort-r { display: flex; align-items: center; gap: 6px; margin-top: 8px; }
+    .sort-r label { font-size: 10px; color: var(--muted); flex-shrink: 0; }
     #sort {
-      flex: 1;
-      padding: 7px 10px;
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-sm);
-      color: var(--text);
-      font-size: 13px;
-      outline: none;
-      cursor: pointer;
+      flex: 1; padding: 6px 8px; background: var(--card); border: 1px solid var(--border);
+      border-radius: var(--rs); color: var(--text); font-size: 12px; outline: none;
     }
-    #sort:focus { border-color: var(--amber); }
+    .tog-w { display: flex; align-items: center; gap: 5px; flex-shrink: 0; }
+    .tog-l { font-size: 10px; color: var(--sub); }
+    .tog { position: relative; width: 32px; height: 18px; cursor: pointer; display: inline-block; }
+    .tog input { display: none; }
+    .tog span {
+      position: absolute; inset: 0; background: var(--border); border-radius: 18px; transition: background .2s;
+    }
+    .tog span::after {
+      content: ''; position: absolute; width: 12px; height: 12px;
+      background: #fff; border-radius: 50%; top: 3px; left: 3px; transition: transform .2s;
+    }
+    .tog input:checked+span { background: var(--green); }
+    .tog input:checked+span::after { transform: translateX(14px); }
 
-    .toggle-wrap {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      flex-shrink: 0;
+    /* === COMPARE MODE TOGGLE === */
+    .cmp-row { display: flex; align-items: center; gap: 8px; margin-top: 8px; }
+    .cmp-btn {
+      font-size: 10px; padding: 3px 8px; border-radius: 12px;
+      border: 1px solid var(--border); background: transparent;
+      color: var(--sub); cursor: pointer;
     }
-    .toggle-label {
-      font-size: 11px;
-      color: var(--text-sub);
-      white-space: nowrap;
-    }
-    .toggle {
-      position: relative;
-      width: 34px;
-      height: 20px;
-      cursor: pointer;
-    }
-    .toggle input { display: none; }
-    .toggle-slider {
-      position: absolute;
-      inset: 0;
-      background: var(--border);
-      border-radius: 20px;
-      transition: background 0.2s;
-    }
-    .toggle-slider::after {
-      content: '';
-      position: absolute;
-      width: 14px;
-      height: 14px;
-      background: white;
-      border-radius: 50%;
-      top: 3px;
-      left: 3px;
-      transition: transform 0.2s;
-    }
-    .toggle input:checked + .toggle-slider { background: var(--green); }
-    .toggle input:checked + .toggle-slider::after { transform: translateX(14px); }
+    .cmp-btn.on { background: var(--blue); border-color: var(--blue); color: #0c0c10; font-weight: 600; }
 
-    /* ===== LIST ===== */
-    .list-header {
-      padding: 8px 16px;
-      font-size: 11px;
-      color: var(--text-muted);
+    /* === LIST === */
+    .list-hdr {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 8px 16px 4px; font-size: 10px; color: var(--muted);
     }
+    .legend { display: flex; gap: 12px; }
+    .lg-i { display: flex; align-items: center; gap: 3px; }
+    .lg-d { width: 7px; height: 7px; border-radius: 50%; }
+    .lg-d.g { background: var(--green); }
+    .lg-d.r { background: var(--red); }
 
-    #whisky-list {
-      padding: 0 12px 80px;
-    }
+    #list { padding: 0 12px 100px; }
 
-    .whisky-card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 14px;
-      margin-bottom: 10px;
-      transition: border-color 0.15s;
+    /* === CARD === */
+    .card {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: var(--r); padding: 12px; margin-bottom: 8px;
     }
-    .whisky-card:active { border-color: var(--amber); }
+    .c-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 8px; margin-bottom: 10px; }
+    .c-brand { font-size: 9px; color: var(--amber); font-weight: 600; text-transform: uppercase; letter-spacing: .5px; }
+    .c-name { font-size: 14px; font-weight: 600; line-height: 1.3; margin-top: 1px; }
+    .c-name-kr { font-size: 11px; color: var(--sub); margin-top: 1px; }
+    .c-vol { font-size: 10px; color: var(--muted); margin-top: 2px; }
+    .c-vol .vol-diff { color: var(--amber); font-weight: 500; }
 
-    .card-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      margin-bottom: 10px;
-      gap: 8px;
+    .badge {
+      flex-shrink: 0; padding: 4px 10px; border-radius: 16px;
+      font-size: 12px; font-weight: 700; text-align: center; line-height: 1.3;
     }
-    .whisky-meta {}
-    .whisky-brand {
-      font-size: 10px;
-      color: var(--amber);
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-    }
-    .whisky-name {
-      font-size: 14px;
-      font-weight: 600;
-      color: var(--text);
-      line-height: 1.3;
-      margin-top: 2px;
-    }
-    .whisky-volume {
-      font-size: 11px;
-      color: var(--text-muted);
-      margin-top: 2px;
-    }
+    .badge.g { background: var(--green-dim); color: var(--green); border: 1px solid rgba(61,186,120,0.25); }
+    .badge.r { background: var(--red-dim); color: var(--red); border: 1px solid rgba(226,85,85,0.25); }
+    .badge.na { background: var(--card); color: var(--muted); border: 1px solid var(--border); font-size: 10px; }
+    .badge-pct { font-size: 9px; display: block; opacity: .8; margin-top: 1px; }
 
-    .savings-badge {
-      flex-shrink: 0;
-      padding: 4px 10px;
-      border-radius: 20px;
-      font-size: 12px;
-      font-weight: 700;
-      text-align: right;
-    }
-    .savings-badge.cheaper {
-      background: var(--green-dim);
-      color: var(--green);
-      border: 1px solid rgba(76, 175, 125, 0.3);
-    }
-    .savings-badge.expensive {
-      background: var(--red-dim);
-      color: var(--red);
-      border: 1px solid rgba(224, 92, 92, 0.3);
-    }
-    .savings-badge .badge-pct {
-      font-size: 10px;
-      display: block;
-      text-align: center;
-      opacity: 0.8;
-      margin-top: 1px;
-    }
+    .price-g { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 5px; }
+    .p-cell { background: var(--surface); border-radius: var(--rs); padding: 7px 6px; text-align: center; }
+    .p-label { font-size: 8px; color: var(--muted); text-transform: uppercase; letter-spacing: .3px; margin-bottom: 3px; }
+    .p-val { font-size: 13px; font-weight: 700; }
+    .p-val.changi { color: var(--amber-light); }
+    .p-val.japan { color: var(--blue); }
+    .p-val.pos { color: var(--green); }
+    .p-val.neg { color: var(--red); }
+    .p-val.na { color: var(--muted); font-size: 11px; }
+    .p-sub { font-size: 8px; color: var(--muted); margin-top: 2px; }
+    .p-sub.per-ml { color: var(--sub); font-weight: 500; }
 
-    .price-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
-      gap: 6px;
-    }
-    .price-cell {
-      background: var(--surface);
-      border-radius: var(--radius-sm);
-      padding: 8px;
-      text-align: center;
-    }
-    .price-cell-label {
-      font-size: 9px;
-      color: var(--text-muted);
-      text-transform: uppercase;
-      letter-spacing: 0.4px;
-      margin-bottom: 3px;
-    }
-    .price-cell-value {
-      font-size: 13px;
-      font-weight: 700;
-    }
-    .price-cell-value.changi { color: var(--amber-light); }
-    .price-cell-value.japan { color: #8eb4ff; }
-    .price-cell-value.diff.positive { color: var(--green); }
-    .price-cell-value.diff.negative { color: var(--red); }
-    .price-cell-sub {
-      font-size: 9px;
-      color: var(--text-muted);
-      margin-top: 2px;
-    }
+    .c-note { margin-top: 7px; font-size: 10px; color: var(--muted); border-top: 1px solid var(--border); padding-top: 6px; }
 
-    .card-notes {
-      margin-top: 8px;
-      font-size: 11px;
-      color: var(--text-muted);
-      border-top: 1px solid var(--border);
-      padding-top: 7px;
-    }
-
-    /* ===== LOADING / EMPTY ===== */
-    .loading {
-      text-align: center;
-      padding: 60px 20px;
-      color: var(--text-muted);
-    }
-    .loading-spinner {
-      width: 36px;
-      height: 36px;
-      border: 3px solid var(--border);
-      border-top-color: var(--amber);
-      border-radius: 50%;
-      animation: spin 0.8s linear infinite;
-      margin: 0 auto 12px;
-    }
+    /* === LOADING === */
+    .loading { text-align: center; padding: 60px 20px; color: var(--muted); }
+    .spinner { width: 32px; height: 32px; border: 3px solid var(--border); border-top-color: var(--amber); border-radius: 50%; animation: spin .7s linear infinite; margin: 0 auto 10px; }
     @keyframes spin { to { transform: rotate(360deg); } }
+    .empty { text-align: center; padding: 50px 20px; color: var(--muted); font-size: 13px; }
+    .empty .em { font-size: 36px; margin-bottom: 10px; }
 
-    .empty {
-      text-align: center;
-      padding: 60px 20px;
-      color: var(--text-muted);
-      font-size: 14px;
-    }
-    .empty .emoji { font-size: 40px; margin-bottom: 12px; }
-
-    /* ===== LEGEND ===== */
-    .legend {
-      display: flex;
-      gap: 14px;
-      padding: 8px 16px 0;
-    }
-    .legend-item {
-      display: flex;
-      align-items: center;
-      gap: 4px;
-      font-size: 10px;
-      color: var(--text-muted);
-    }
-    .legend-dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-    }
-    .legend-dot.green { background: var(--green); }
-    .legend-dot.red { background: var(--red); }
-
-    /* ===== TOAST ===== */
     .toast {
-      position: fixed;
-      bottom: 20px;
-      left: 50%;
-      transform: translateX(-50%);
-      background: var(--card);
-      border: 1px solid var(--amber);
-      color: var(--amber-light);
-      padding: 10px 20px;
-      border-radius: 20px;
-      font-size: 12px;
-      font-weight: 500;
-      opacity: 0;
-      transition: opacity 0.3s;
-      pointer-events: none;
-      z-index: 999;
-      white-space: nowrap;
+      position: fixed; bottom: 16px; left: 50%; transform: translateX(-50%);
+      background: var(--card); border: 1px solid var(--amber); color: var(--amber-light);
+      padding: 8px 18px; border-radius: 18px; font-size: 11px; font-weight: 500;
+      opacity: 0; transition: opacity .3s; pointer-events: none; z-index: 999; white-space: nowrap;
     }
     .toast.show { opacity: 1; }
 
-    /* ===== COUNT BADGE ===== */
-    .count-badge {
-      display: inline-block;
-      background: var(--amber-dim);
-      color: var(--amber);
-      border-radius: 10px;
-      padding: 1px 7px;
-      font-size: 11px;
-      font-weight: 600;
-      margin-left: 4px;
-    }
-
     @media (max-width: 360px) {
-      .price-grid { grid-template-columns: 1fr 1fr; }
-      .price-cell:last-child { grid-column: 1 / -1; }
+      .price-g { grid-template-columns: 1fr 1fr; }
+      .price-g .p-cell:last-child { grid-column: 1 / -1; }
     }
   </style>
 </head>
 <body>
 
-<!-- HEADER -->
-<header class="header">
-  <div class="header-top">
+<header>
+  <div class="hdr-row">
     <div>
-      <div class="app-title">🥃 위스키 가격 비교</div>
-      <div class="app-subtitle">창이공항 면세점 vs 일본 시중 최저가</div>
+      <div class="app-t">🥃 위스키 가격비교</div>
+      <div class="app-st">창이공항 면세점 vs 일본 시중 최저가 (엔화 기준)</div>
     </div>
-    <div class="rate-badge" id="rate-badge">
-      <span id="rate-value">로딩중...</span>
-      <span class="rate-date" id="rate-date"></span>
+    <div class="rate-pill">
+      <div class="rate-v" id="rateV">로딩...</div>
+      <span class="rate-d" id="rateD"></span>
     </div>
   </div>
 </header>
 
-<!-- STATS BAR -->
-<div class="stats-bar" id="stats-bar">
-  <div class="stat-item">
-    <div class="stat-value" id="stat-count">—</div>
-    <div class="stat-label">총 종류</div>
-  </div>
-  <div class="stat-item">
-    <div class="stat-value" id="stat-cheaper">—</div>
-    <div class="stat-label">창이가 저렴</div>
-  </div>
-  <div class="stat-item">
-    <div class="stat-value" id="stat-best-savings">—</div>
-    <div class="stat-label">최대 절약 (¥)</div>
-  </div>
-  <div class="stat-item">
-    <div class="stat-value" id="stat-best-pct">—</div>
-    <div class="stat-label">최대 절약 (%)</div>
-  </div>
+<div class="info-bar" id="infoBar">
+  <span class="info-tag">🛫 창이: <span id="srcChangi">—</span></span>
+  <span class="info-tag">🗾 일본: <span id="srcJapan">—</span></span>
+  <span class="info-tag">📅 갱신: <span id="srcDate">—</span></span>
 </div>
 
-<!-- CONTROLS -->
-<div class="controls">
-  <div class="search-wrap">
-    <span class="search-icon">🔍</span>
-    <input type="search" id="search" placeholder="위스키 이름 또는 브랜드 검색..." autocomplete="off" />
+<div class="stats">
+  <div class="st-item"><div class="st-v" id="s-cnt">—</div><div class="st-l">비교 가능</div></div>
+  <div class="st-item"><div class="st-v" id="s-win">—</div><div class="st-l">창이 저렴</div></div>
+  <div class="st-item"><div class="st-v" id="s-best">—</div><div class="st-l">최대 절약(¥)</div></div>
+  <div class="st-item"><div class="st-v" id="s-bpct">—</div><div class="st-l">최대 절약(%)</div></div>
+</div>
+
+<div class="ctrl">
+  <div class="search-w"><input type="search" id="search" placeholder="위스키 이름 · 브랜드 검색..." autocomplete="off"/></div>
+  <div class="filter-r" id="filters">
+    <button class="fbtn on" data-c="all">전체</button>
+    <button class="fbtn" data-c="japanese">🇯🇵 일본</button>
+    <button class="fbtn" data-c="scotch">🏴󠁧󠁢󠁳󠁣󠁴󠁿 스카치</button>
+    <button class="fbtn" data-c="american">🇺🇸 아메리칸</button>
+    <button class="fbtn" data-c="irish">🇮🇪 아이리시</button>
   </div>
-  <div class="filter-row" id="filter-row">
-    <button class="filter-btn active" data-cat="all">전체</button>
-    <button class="filter-btn" data-cat="japanese">🇯🇵 일본</button>
-    <button class="filter-btn" data-cat="scotch">🏴󠁧󠁢󠁳󠁣󠁴󠁿 스카치</button>
-    <button class="filter-btn" data-cat="american">🇺🇸 아메리칸</button>
-    <button class="filter-btn" data-cat="irish">🇮🇪 아이리시</button>
-  </div>
-  <div class="sort-row">
-    <span class="sort-label">정렬:</span>
+  <div class="sort-r">
+    <label>정렬:</label>
     <select id="sort">
-      <option value="savings-desc">절약금액 높은순 (¥)</option>
-      <option value="savings-pct-desc">절약률 높은순 (%)</option>
-      <option value="name-asc">이름 오름차순</option>
+      <option value="save-desc">절약금액 높은순</option>
+      <option value="save-pct">절약률 높은순</option>
+      <option value="name">이름순</option>
       <option value="changi-asc">창이가격 낮은순</option>
-      <option value="changi-desc">창이가격 높은순</option>
       <option value="japan-asc">일본가격 낮은순</option>
     </select>
-    <label class="toggle-wrap" title="창이공항이 더 저렴한 제품만 보기">
-      <span class="toggle-label">절약만</span>
-      <label class="toggle">
-        <input type="checkbox" id="only-savings" />
-        <span class="toggle-slider"></span>
-      </label>
-    </label>
+    <div class="tog-w">
+      <span class="tog-l">절약만</span>
+      <label class="tog"><input type="checkbox" id="onlySave"/><span></span></label>
+    </div>
+  </div>
+  <div class="cmp-row">
+    <button class="cmp-btn on" id="cmpTotal">총액 비교</button>
+    <button class="cmp-btn" id="cmpMl">ml당 비교</button>
+    <span style="font-size:9px;color:var(--muted);">※ 용량 다를 때 ml당 비교 추천</span>
   </div>
 </div>
 
-<!-- LIST HEADER -->
-<div style="display:flex; align-items:center; justify-content:space-between; padding:8px 16px 4px;">
+<div class="list-hdr">
   <div class="legend">
-    <span class="legend-item"><span class="legend-dot green"></span>창이 저렴</span>
-    <span class="legend-item"><span class="legend-dot red"></span>일본 저렴</span>
+    <span class="lg-i"><span class="lg-d g"></span>창이 저렴</span>
+    <span class="lg-i"><span class="lg-d r"></span>일본 저렴</span>
   </div>
-  <div style="font-size:11px; color:var(--text-muted);">
-    <span id="list-count">—</span>개
-  </div>
+  <span id="listCnt">—</span>
 </div>
 
-<!-- WHISKY LIST -->
-<div id="whisky-list">
-  <div class="loading">
-    <div class="loading-spinner"></div>
-    <div>가격 정보 불러오는 중...</div>
-  </div>
+<div id="list">
+  <div class="loading"><div class="spinner"></div>가격 정보 불러오는 중...</div>
 </div>
-
-<!-- TOAST -->
 <div class="toast" id="toast"></div>
 
 <script>
-const BASE = '';
-let allWhiskies = [];
-let exchangeRate = null;
-let currentCategory = 'all';
-let currentSearch = '';
-let currentSort = 'savings-desc';
-let onlySavings = false;
+let products = [], rate = null, cat = 'all', q = '', srt = 'save-desc', onlySave = false, perMl = false;
 
-function fmt(n, dec = 0) {
-  return n.toLocaleString('ko-KR', { maximumFractionDigits: dec, minimumFractionDigits: dec });
-}
+const $ = id => document.getElementById(id);
+const fmt = (n, d=0) => n.toLocaleString('ko-KR', {maximumFractionDigits:d, minimumFractionDigits:d});
 
-function showToast(msg) {
-  const t = document.getElementById('toast');
-  t.textContent = msg;
-  t.classList.add('show');
-  setTimeout(() => t.classList.remove('show'), 2500);
-}
+function toast(m) { const t=$('toast'); t.textContent=m; t.classList.add('show'); setTimeout(()=>t.classList.remove('show'),2500); }
 
-async function fetchRate() {
+async function loadRate() {
   try {
-    const res = await fetch(`${BASE}/.netlify/functions/exchange-rate`);
-    const data = await res.json();
-    exchangeRate = data.rate;
-    const el = document.getElementById('rate-value');
-    const dateEl = document.getElementById('rate-date');
-    el.textContent = `1 SGD = ¥${fmt(data.rate, 2)}`;
-    dateEl.textContent = data.fallback ? '※ 대체값' : data.date;
-    if (data.fallback) showToast('⚠️ 환율 조회 실패. 기본값 사용 중');
-  } catch (e) {
-    exchangeRate = 112.0;
-    document.getElementById('rate-value').textContent = '1 SGD = ¥112.00';
-    document.getElementById('rate-date').textContent = '※ 대체값';
-    showToast('⚠️ 환율 조회 실패. 기본값(112) 사용 중');
+    const r = await (await fetch('/.netlify/functions/exchange-rate')).json();
+    rate = r.rate;
+    $('rateV').textContent = `1 SGD = ¥${fmt(r.rate,2)}`;
+    $('rateD').textContent = r.fallback ? '※ 대체값' : r.date;
+    if (r.fallback) toast('⚠️ 환율 대체값 사용 중');
+  } catch(e) {
+    rate = 112;
+    $('rateV').textContent = '1 SGD = ¥112.00';
+    $('rateD').textContent = '※ 대체값';
+    toast('⚠️ 환율 조회 실패');
   }
-  renderAll();
+  render();
 }
 
-async function fetchWhiskies() {
+async function loadData() {
   try {
-    const res = await fetch(`${BASE}/.netlify/functions/whisky-prices`);
-    allWhiskies = await res.json();
-  } catch (e) {
-    document.getElementById('whisky-list').innerHTML =
-      '<div class="empty"><div class="emoji">⚠️</div>데이터를 불러오지 못했습니다.<br>새로고침을 시도해 주세요.</div>';
+    const d = await (await fetch('/.netlify/functions/whisky-prices')).json();
+    products = d.products;
+    $('srcChangi').textContent = d.meta.changiSource;
+    $('srcJapan').textContent = d.meta.japanSource;
+    $('srcDate').textContent = d.meta.lastUpdated;
+  } catch(e) {
+    $('list').innerHTML = '<div class="empty"><div class="em">⚠️</div>데이터 로드 실패. 새로고침하세요.</div>';
   }
 }
 
-function calcDiff(w) {
-  if (!exchangeRate) return null;
-  const changiJPY = w.changiPriceSGD * exchangeRate;
-  const diff = w.japanPriceJPY - changiJPY;
-  const pct = (diff / w.japanPriceJPY) * 100;
-  return { changiJPY, diff, pct };
+function calc(p) {
+  if (!rate || !p.changi.available || !p.changi.priceSGD) return null;
+  const cJpy = p.changi.priceSGD * rate;
+  const jJpy = p.japan.priceJPY;
+  const cVol = p.changi.volumeML;
+  const jVol = p.japan.volumeML;
+
+  if (perMl) {
+    const cPerMl = cJpy / cVol;
+    const jPerMl = jJpy / jVol;
+    const diff = jPerMl - cPerMl;
+    const pct = (diff / jPerMl) * 100;
+    return { changiJPY: cJpy, diff: diff * jVol, diffPerMl: diff, pct, cPerMl, jPerMl, mode: 'ml' };
+  } else {
+    const diff = jJpy - cJpy;
+    const pct = (diff / jJpy) * 100;
+    return { changiJPY: cJpy, diff, pct, mode: 'total' };
+  }
 }
 
-function getFiltered() {
-  let list = allWhiskies.filter(w => {
-    if (currentCategory !== 'all' && w.category !== currentCategory) return false;
-    if (currentSearch) {
-      const q = currentSearch.toLowerCase();
-      if (!w.name.toLowerCase().includes(q) && !w.brand.toLowerCase().includes(q)) return false;
+function filtered() {
+  let list = products.filter(p => {
+    if (cat !== 'all' && p.category !== cat) return false;
+    if (q) {
+      const s = q.toLowerCase();
+      if (!p.name.toLowerCase().includes(s) && !p.brand.toLowerCase().includes(s) && !(p.nameKR||'').includes(s)) return false;
     }
-    if (onlySavings) {
-      const d = calcDiff(w);
-      if (!d || d.diff <= 0) return false;
-    }
+    if (onlySave) { const d=calc(p); if(!d||d.diff<=0) return false; }
     return true;
   });
 
-  const sortFn = {
-    'savings-desc': (a, b) => {
-      const da = calcDiff(a), db = calcDiff(b);
-      return (db ? db.diff : 0) - (da ? da.diff : 0);
-    },
-    'savings-pct-desc': (a, b) => {
-      const da = calcDiff(a), db = calcDiff(b);
-      return (db ? db.pct : 0) - (da ? da.pct : 0);
-    },
-    'name-asc': (a, b) => a.name.localeCompare(b.name),
-    'changi-asc': (a, b) => a.changiPriceSGD - b.changiPriceSGD,
-    'changi-desc': (a, b) => b.changiPriceSGD - a.changiPriceSGD,
-    'japan-asc': (a, b) => a.japanPriceJPY - b.japanPriceJPY,
+  const sf = {
+    'save-desc': (a,b) => ((calc(b)||{diff:-Infinity}).diff) - ((calc(a)||{diff:-Infinity}).diff),
+    'save-pct': (a,b) => ((calc(b)||{pct:-Infinity}).pct) - ((calc(a)||{pct:-Infinity}).pct),
+    'name': (a,b) => a.name.localeCompare(b.name),
+    'changi-asc': (a,b) => (a.changi.priceSGD||9999) - (b.changi.priceSGD||9999),
+    'japan-asc': (a,b) => a.japan.priceJPY - b.japan.priceJPY,
   };
-  list.sort(sortFn[currentSort] || sortFn['savings-desc']);
+  list.sort(sf[srt] || sf['save-desc']);
   return list;
 }
 
-function updateStats(list) {
-  if (!exchangeRate) return;
-  const cheaper = list.filter(w => { const d = calcDiff(w); return d && d.diff > 0; });
-  const savings = list.map(w => calcDiff(w)).filter(Boolean);
-  const maxSav = savings.reduce((m, d) => d.diff > m ? d.diff : m, -Infinity);
-  const maxPct = savings.reduce((m, d) => d.pct > m ? d.pct : m, -Infinity);
+function stats(list) {
+  if (!rate) return;
+  const comparable = list.filter(p => p.changi.available && p.changi.priceSGD);
+  const diffs = comparable.map(calc).filter(Boolean);
+  const wins = diffs.filter(d => d.diff > 0);
+  const maxSav = diffs.reduce((m,d) => d.diff>m?d.diff:m, -Infinity);
+  const maxPct = diffs.reduce((m,d) => d.pct>m?d.pct:m, -Infinity);
 
-  document.getElementById('stat-count').textContent = list.length;
-  document.getElementById('stat-cheaper').textContent = `${cheaper.length}종`;
-  document.getElementById('stat-best-savings').textContent =
-    maxSav > 0 ? `¥${fmt(Math.round(maxSav))}` : '-';
-  document.getElementById('stat-best-pct').textContent =
-    maxPct > 0 ? `${fmt(maxPct, 1)}%` : '-';
-  document.getElementById('list-count').textContent = list.length;
+  $('s-cnt').textContent = comparable.length + '종';
+  $('s-win').textContent = wins.length + '종';
+  $('s-best').textContent = maxSav>0 ? '¥'+fmt(Math.round(maxSav)) : '-';
+  $('s-bpct').textContent = maxPct>0 ? fmt(maxPct,1)+'%' : '-';
+  $('listCnt').textContent = list.length + '개';
 }
 
-function renderCard(w) {
-  const d = calcDiff(w);
-  const isCheaper = d && d.diff > 0;
-  const catEmoji = { japanese: '🇯🇵', scotch: '🥃', american: '🇺🇸', irish: '🇮🇪' }[w.category] || '';
+function card(p) {
+  const d = calc(p);
+  const ok = d !== null;
+  const win = ok && d.diff > 0;
+  const ce = { japanese:'🇯🇵', scotch:'🥃', american:'🇺🇸', irish:'🇮🇪' }[p.category]||'';
+  const volDiff = p.changi.volumeML !== p.japan.volumeML;
 
-  const badgeText = d
-    ? (isCheaper
-        ? `¥${fmt(Math.round(d.diff))} 절약`
-        : `¥${fmt(Math.round(-d.diff))} 비쌈`)
-    : '';
-  const badgePct = d
-    ? `${isCheaper ? '' : '+'}${fmt(-d.pct, 1)}%`
-    : '';
+  let badgeHtml = '';
+  if (!p.changi.available) {
+    badgeHtml = '<div class="badge na">창이 미판매</div>';
+  } else if (ok) {
+    badgeHtml = `<div class="badge ${win?'g':'r'}">
+      ${win ? '¥'+fmt(Math.round(d.diff))+' 절약' : '¥'+fmt(Math.round(-d.diff))+' 비쌈'}
+      <span class="badge-pct">${win?'▼':'▲'}${Math.abs(d.pct).toFixed(1)}%${d.mode==='ml'?' (ml당)':''}</span>
+    </div>`;
+  }
 
-  const changiJPY = d ? Math.round(d.changiJPY) : 0;
+  const changiJpyStr = ok ? '≈ ¥' + fmt(Math.round(d.changiJPY)) : '';
+  const changiPerMl = ok ? '¥' + fmt(d.changiJPY / p.changi.volumeML, 1) + '/ml' : '';
+  const japanPerMl = '¥' + fmt(p.japan.priceJPY / p.japan.volumeML, 1) + '/ml';
 
-  return `
-  <div class="whisky-card">
-    <div class="card-header">
-      <div class="whisky-meta">
-        <div class="whisky-brand">${catEmoji} ${w.brand}</div>
-        <div class="whisky-name">${w.name}</div>
-        <div class="whisky-volume">${w.volume}ml</div>
-      </div>
-      ${d ? `
-      <div class="savings-badge ${isCheaper ? 'cheaper' : 'expensive'}">
-        ${badgeText}
-        <span class="badge-pct">${isCheaper ? '▼' : '▲'}${Math.abs(d.pct).toFixed(1)}%</span>
-      </div>` : ''}
-    </div>
-    <div class="price-grid">
-      <div class="price-cell">
-        <div class="price-cell-label">🛫 창이 (SGD)</div>
-        <div class="price-cell-value changi">S$${fmt(w.changiPriceSGD)}</div>
-        ${d ? `<div class="price-cell-sub">≈ ¥${fmt(changiJPY)}</div>` : ''}
-      </div>
-      <div class="price-cell">
-        <div class="price-cell-label">🗾 일본 최저가</div>
-        <div class="price-cell-value japan">¥${fmt(w.japanPriceJPY)}</div>
-        <div class="price-cell-sub">&nbsp;</div>
-      </div>
-      <div class="price-cell">
-        <div class="price-cell-label">차이 (엔화)</div>
-        ${d ? `
-        <div class="price-cell-value diff ${isCheaper ? 'positive' : 'negative'}">
-          ${isCheaper ? '▼' : '▲'} ¥${fmt(Math.round(Math.abs(d.diff)))}
+  const diffHtml = ok
+    ? `<div class="p-val ${win?'pos':'neg'}">${win?'▼':'▲'} ¥${fmt(Math.round(Math.abs(d.diff)))}</div>
+       <div class="p-sub">${win?'창이가 저렴':'일본이 저렴'}</div>`
+    : '<div class="p-val na">비교 불가</div>';
+
+  const notes = [];
+  if (p.changi.notes) notes.push('🛫 ' + p.changi.notes);
+  if (volDiff && p.changi.available) notes.push('⚠️ 용량 다름 → ml당 비교 추천');
+  const noteHtml = notes.length ? `<div class="c-note">${notes.join(' · ')}</div>` : '';
+
+  return `<div class="card">
+    <div class="c-top">
+      <div>
+        <div class="c-brand">${ce} ${p.brand}</div>
+        <div class="c-name">${p.name}</div>
+        ${p.nameKR ? `<div class="c-name-kr">${p.nameKR}</div>` : ''}
+        <div class="c-vol">
+          🛫 ${p.changi.volumeML}ml ${volDiff ? `<span class="vol-diff">≠</span> 🗾 ${p.japan.volumeML}ml` : `/ 🗾 ${p.japan.volumeML}ml`}
         </div>
-        <div class="price-cell-sub">${isCheaper ? '창이가 저렴' : '일본이 저렴'}</div>
-        ` : '<div class="price-cell-value" style="color:var(--text-muted)">—</div>'}
+      </div>
+      ${badgeHtml}
+    </div>
+    <div class="price-g">
+      <div class="p-cell">
+        <div class="p-label">🛫 창이 (SGD)</div>
+        ${p.changi.available && p.changi.priceSGD
+          ? `<div class="p-val changi">S$${fmt(p.changi.priceSGD)}</div>
+             <div class="p-sub">${changiJpyStr}</div>
+             ${perMl ? `<div class="p-sub per-ml">${changiPerMl}</div>` : ''}`
+          : '<div class="p-val na">미판매</div>'}
+      </div>
+      <div class="p-cell">
+        <div class="p-label">🗾 일본 최저가</div>
+        <div class="p-val japan">¥${fmt(p.japan.priceJPY)}</div>
+        <div class="p-sub">&nbsp;</div>
+        ${perMl ? `<div class="p-sub per-ml">${japanPerMl}</div>` : ''}
+      </div>
+      <div class="p-cell">
+        <div class="p-label">차이 (엔화)</div>
+        ${diffHtml}
       </div>
     </div>
-    ${w.notes ? `<div class="card-notes">💬 ${w.notes}</div>` : ''}
+    ${noteHtml}
   </div>`;
 }
 
-function renderAll() {
-  if (!exchangeRate || allWhiskies.length === 0) return;
-  const list = getFiltered();
-  updateStats(list);
-
-  const el = document.getElementById('whisky-list');
-  if (list.length === 0) {
-    el.innerHTML = '<div class="empty"><div class="emoji">🔍</div>조건에 맞는 위스키가 없습니다.</div>';
-    return;
-  }
-  el.innerHTML = list.map(renderCard).join('');
+function render() {
+  if (!rate || !products.length) return;
+  const list = filtered();
+  stats(list);
+  const el = $('list');
+  if (!list.length) { el.innerHTML = '<div class="empty"><div class="em">🔍</div>조건에 맞는 위스키가 없습니다.</div>'; return; }
+  el.innerHTML = list.map(card).join('');
 }
 
-// Event listeners
-document.getElementById('search').addEventListener('input', e => {
-  currentSearch = e.target.value.trim();
-  renderAll();
+// Events
+$('search').addEventListener('input', e => { q = e.target.value.trim(); render(); });
+$('filters').addEventListener('click', e => {
+  const b = e.target.closest('.fbtn');
+  if (!b) return;
+  document.querySelectorAll('.fbtn').forEach(x => x.classList.remove('on'));
+  b.classList.add('on');
+  cat = b.dataset.c;
+  render();
 });
-
-document.getElementById('filter-row').addEventListener('click', e => {
-  const btn = e.target.closest('.filter-btn');
-  if (!btn) return;
-  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-  btn.classList.add('active');
-  currentCategory = btn.dataset.cat;
-  renderAll();
-});
-
-document.getElementById('sort').addEventListener('change', e => {
-  currentSort = e.target.value;
-  renderAll();
-});
-
-document.getElementById('only-savings').addEventListener('change', e => {
-  onlySavings = e.target.checked;
-  renderAll();
-});
+$('sort').addEventListener('change', e => { srt = e.target.value; render(); });
+$('onlySave').addEventListener('change', e => { onlySave = e.target.checked; render(); });
+$('cmpTotal').addEventListener('click', () => { perMl=false; $('cmpTotal').classList.add('on'); $('cmpMl').classList.remove('on'); render(); });
+$('cmpMl').addEventListener('click', () => { perMl=true; $('cmpMl').classList.add('on'); $('cmpTotal').classList.remove('on'); render(); });
 
 // Init
-(async () => {
-  await fetchWhiskies();
-  await fetchRate();
-})();
+(async () => { await loadData(); await loadRate(); })();
 </script>
 </body>
 </html>

@@ -1,0 +1,43 @@
+name: Update Japan Whisky Prices
+
+on:
+  schedule:
+    - cron: '0 3 * * 1,4' # 매주 월/목 12:00 JST (03:00 UTC)
+  workflow_dispatch: # 수동 실행 가능
+
+jobs:
+  update-prices:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Fetch Japan market prices from Rakuten
+        run: node scripts/update-japan-prices.mjs
+
+      - name: Check for changes
+        id: check
+        run: |
+          if git diff --quiet data/whiskies.json; then
+            echo "changed=false" >> $GITHUB_OUTPUT
+            echo "No price changes detected."
+          else
+            echo "changed=true" >> $GITHUB_OUTPUT
+            echo "Price changes detected!"
+            git diff --stat data/whiskies.json
+          fi
+
+      - name: Commit and push if changed
+        if: steps.check.outputs.changed == 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/whiskies.json
+          git commit -m "chore: 일본 위스키 시장가격 자동 갱신 ($(date +%Y-%m-%d))"
+          git push

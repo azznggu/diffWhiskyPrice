@@ -1,472 +1,260 @@
-[
-  {
-    "id": "hibiki-harmony",
-    "name": "Hibiki Japanese Harmony",
-    "brand": "Suntory",
-    "category": "japanese",
-    "volume": 700,
-    "changiPriceSGD": 118,
-    "japanPriceJPY": 6050,
-    "notes": "창이공항 인기 No.1. 일본에서는 정가 입수 어려움"
+{
+  "meta": {
+    "lastUpdated": "2026-03-19",
+    "changiSource": "iShopChangi.com (Traveller mode)",
+    "japanSource": "kakaku.com (最安値)",
+    "notes": "창이 가격은 여행자 모드 기준. 일본 가격은 kakaku.com 최저가. 용량 차이 주의."
   },
-  {
-    "id": "yamazaki-12",
-    "name": "Yamazaki 12 Year",
-    "brand": "Suntory",
-    "category": "japanese",
-    "volume": 700,
-    "changiPriceSGD": 188,
-    "japanPriceJPY": 12100,
-    "notes": "일본 정가로 입수 매우 어려움. MSRP 기준"
-  },
-  {
-    "id": "yamazaki-dr",
-    "name": "Yamazaki Distiller's Reserve",
-    "brand": "Suntory",
-    "category": "japanese",
-    "volume": 700,
-    "changiPriceSGD": 138,
-    "japanPriceJPY": 7700,
-    "notes": "면세점 정규 취급"
-  },
-  {
-    "id": "hakushu-12",
-    "name": "Hakushu 12 Year",
-    "brand": "Suntory",
-    "category": "japanese",
-    "volume": 700,
-    "changiPriceSGD": 198,
-    "japanPriceJPY": 12100,
-    "notes": "일본 정가 입수 매우 어려움"
-  },
-  {
-    "id": "hakushu-dr",
-    "name": "Hakushu Distiller's Reserve",
-    "brand": "Suntory",
-    "category": "japanese",
-    "volume": 700,
-    "changiPriceSGD": 138,
-    "japanPriceJPY": 7700,
-    "notes": "면세점 정규 취급"
-  },
-  {
-    "id": "nikka-coffey-grain",
-    "name": "Nikka Coffey Grain",
-    "brand": "Nikka",
-    "category": "japanese",
-    "volume": 700,
-    "changiPriceSGD": 105,
-    "japanPriceJPY": 4400,
-    "notes": "아마존 JP, 주류 전문점에서 구매 가능"
-  },
-  {
-    "id": "nikka-coffey-malt",
-    "name": "Nikka Coffey Malt",
-    "brand": "Nikka",
-    "category": "japanese",
-    "volume": 700,
-    "changiPriceSGD": 108,
-    "japanPriceJPY": 4400,
-    "notes": "아마존 JP, 주류 전문점에서 구매 가능"
-  },
-  {
-    "id": "nikka-ftb",
-    "name": "Nikka From The Barrel",
-    "brand": "Nikka",
-    "category": "japanese",
-    "volume": 500,
-    "changiPriceSGD": 85,
-    "japanPriceJPY": 3080,
-    "notes": "500ml. 아마존 JP에서 구매 용이"
-  },
-  {
-    "id": "nikka-yoichi",
-    "name": "Nikka Yoichi Single Malt",
-    "brand": "Nikka",
-    "category": "japanese",
-    "volume": 700,
-    "changiPriceSGD": 155,
-    "japanPriceJPY": 8800,
-    "notes": "증류소 직판 또는 주류 전문점"
-  },
-  {
-    "id": "miyagikyo",
-    "name": "Miyagikyo Single Malt",
-    "brand": "Nikka",
-    "category": "japanese",
-    "volume": 700,
-    "changiPriceSGD": 155,
-    "japanPriceJPY": 8800,
-    "notes": "증류소 직판 또는 주류 전문점"
-  },
-  {
-    "id": "fuji-single-grain",
-    "name": "Fuji Single Grain",
-    "brand": "Kirin",
-    "category": "japanese",
-    "volume": 700,
-    "changiPriceSGD": 118,
-    "japanPriceJPY": 6600,
-    "notes": "후지 증류소 산. 수퍼마켓에서 구매 가능"
-  },
-  {
-    "id": "mars-iwai",
-    "name": "Mars Shinshu Iwai Tradition",
-    "brand": "Mars",
-    "category": "japanese",
-    "volume": 700,
-    "changiPriceSGD": 75,
-    "japanPriceJPY": 3300,
-    "notes": "신슈 증류소 산. 비교적 구하기 쉬움"
-  },
-  {
-    "id": "glenfiddich-12",
-    "name": "Glenfiddich 12 Year",
-    "brand": "Glenfiddich",
-    "category": "scotch",
-    "volume": 700,
-    "changiPriceSGD": 78,
-    "japanPriceJPY": 4000,
-    "notes": "스카치 입문 정석"
-  },
-  {
-    "id": "glenfiddich-15",
-    "name": "Glenfiddich 15 Year Solera",
-    "brand": "Glenfiddich",
-    "category": "scotch",
-    "volume": 700,
-    "changiPriceSGD": 108,
-    "japanPriceJPY": 5800,
-    "notes": ""
-  },
-  {
-    "id": "glenfiddich-18",
-    "name": "Glenfiddich 18 Year",
-    "brand": "Glenfiddich",
-    "category": "scotch",
-    "volume": 700,
-    "changiPriceSGD": 168,
-    "japanPriceJPY": 9500,
-    "notes": ""
-  },
-  {
-    "id": "macallan-12dc",
-    "name": "The Macallan 12 Year Double Cask",
-    "brand": "Macallan",
-    "category": "scotch",
-    "volume": 700,
-    "changiPriceSGD": 145,
-    "japanPriceJPY": 8000,
-    "notes": ""
-  },
-  {
-    "id": "macallan-12so",
-    "name": "The Macallan 12 Year Sherry Oak",
-    "brand": "Macallan",
-    "category": "scotch",
-    "volume": 700,
-    "changiPriceSGD": 160,
-    "japanPriceJPY": 9500,
-    "notes": "셰리 오크 숙성"
-  },
-  {
-    "id": "macallan-18dc",
-    "name": "The Macallan 18 Year Double Cask",
-    "brand": "Macallan",
-    "category": "scotch",
-    "volume": 700,
-    "changiPriceSGD": 448,
-    "japanPriceJPY": 35000,
-    "notes": "프리미엄 라인"
-  },
-  {
-    "id": "glenlivet-12",
-    "name": "The Glenlivet 12 Year",
-    "brand": "Glenlivet",
-    "category": "scotch",
-    "volume": 700,
-    "changiPriceSGD": 68,
-    "japanPriceJPY": 3500,
-    "notes": ""
-  },
-  {
-    "id": "glenlivet-18",
-    "name": "The Glenlivet 18 Year",
-    "brand": "Glenlivet",
-    "category": "scotch",
-    "volume": 700,
-    "changiPriceSGD": 148,
-    "japanPriceJPY": 9000,
-    "notes": ""
-  },
-  {
-    "id": "balvenie-12dw",
-    "name": "The Balvenie 12 Year DoubleWood",
-    "brand": "Balvenie",
-    "category": "scotch",
-    "volume": 700,
-    "changiPriceSGD": 105,
-    "japanPriceJPY": 6500,
-    "notes": ""
-  },
-  {
-    "id": "balvenie-14cc",
-    "name": "The Balvenie 14 Year Caribbean Cask",
-    "brand": "Balvenie",
-    "category": "scotch",
-    "volume": 700,
-    "changiPriceSGD": 135,
-    "japanPriceJPY": 8000,
-    "notes": "카리브해 럼 캐스크 피니쉬"
-  },
-  {
-    "id": "laphroaig-10",
-    "name": "Laphroaig 10 Year",
-    "brand": "Laphroaig",
-    "category": "scotch",
-    "volume": 700,
-    "changiPriceSGD": 82,
-    "japanPriceJPY": 4800,
-    "notes": "아일라 피트 위스키"
-  },
-  {
-    "id": "laphroaig-qc",
-    "name": "Laphroaig Quarter Cask",
-    "brand": "Laphroaig",
-    "category": "scotch",
-    "volume": 700,
-    "changiPriceSGD": 95,
-    "japanPriceJPY": 5500,
-    "notes": "쿼터 캐스크 숙성"
-  },
-  {
-    "id": "bowmore-12",
-    "name": "Bowmore 12 Year",
-    "brand": "Bowmore",
-    "category": "scotch",
-    "volume": 700,
-    "changiPriceSGD": 85,
-    "japanPriceJPY": 4500,
-    "notes": "아일라 섬 최고령 증류소"
-  },
-  {
-    "id": "highland-park-12",
-    "name": "Highland Park 12 Year Viking Honour",
-    "brand": "Highland Park",
-    "category": "scotch",
-    "volume": 700,
-    "changiPriceSGD": 88,
-    "japanPriceJPY": 5200,
-    "notes": ""
-  },
-  {
-    "id": "talisker-10",
-    "name": "Talisker 10 Year",
-    "brand": "Talisker",
-    "category": "scotch",
-    "volume": 700,
-    "changiPriceSGD": 85,
-    "japanPriceJPY": 4800,
-    "notes": "스카이섬 산. 해양 풍미"
-  },
-  {
-    "id": "oban-14",
-    "name": "Oban 14 Year",
-    "brand": "Oban",
-    "category": "scotch",
-    "volume": 700,
-    "changiPriceSGD": 115,
-    "japanPriceJPY": 7000,
-    "notes": ""
-  },
-  {
-    "id": "dalmore-12",
-    "name": "The Dalmore 12 Year",
-    "brand": "Dalmore",
-    "category": "scotch",
-    "volume": 700,
-    "changiPriceSGD": 105,
-    "japanPriceJPY": 6000,
-    "notes": ""
-  },
-  {
-    "id": "bunnahabhain-12",
-    "name": "Bunnahabhain 12 Year",
-    "brand": "Bunnahabhain",
-    "category": "scotch",
-    "volume": 700,
-    "changiPriceSGD": 88,
-    "japanPriceJPY": 5500,
-    "notes": "아일라 비피트 위스키"
-  },
-  {
-    "id": "chivas-12",
-    "name": "Chivas Regal 12 Year",
-    "brand": "Chivas Regal",
-    "category": "scotch",
-    "volume": 700,
-    "changiPriceSGD": 65,
-    "japanPriceJPY": 2800,
-    "notes": "블렌디드 스카치"
-  },
-  {
-    "id": "chivas-18",
-    "name": "Chivas Regal 18 Year",
-    "brand": "Chivas Regal",
-    "category": "scotch",
-    "volume": 700,
-    "changiPriceSGD": 128,
-    "japanPriceJPY": 6500,
-    "notes": "블렌디드 스카치 18년"
-  },
-  {
-    "id": "jw-black",
-    "name": "Johnnie Walker Black Label",
-    "brand": "Johnnie Walker",
-    "category": "scotch",
-    "volume": 700,
-    "changiPriceSGD": 68,
-    "japanPriceJPY": 2800,
-    "notes": "블렌디드 스카치 글로벌 베스트셀러"
-  },
-  {
-    "id": "jw-gold",
-    "name": "Johnnie Walker Gold Label Reserve",
-    "brand": "Johnnie Walker",
-    "category": "scotch",
-    "volume": 700,
-    "changiPriceSGD": 105,
-    "japanPriceJPY": 6000,
-    "notes": ""
-  },
-  {
-    "id": "jw-blue",
-    "name": "Johnnie Walker Blue Label",
-    "brand": "Johnnie Walker",
-    "category": "scotch",
-    "volume": 750,
-    "changiPriceSGD": 245,
-    "japanPriceJPY": 20000,
-    "notes": "프리미엄 블렌디드. 750ml"
-  },
-  {
-    "id": "ballantines-17",
-    "name": "Ballantine's 17 Year",
-    "brand": "Ballantine's",
-    "category": "scotch",
-    "volume": 700,
-    "changiPriceSGD": 88,
-    "japanPriceJPY": 4500,
-    "notes": ""
-  },
-  {
-    "id": "monkey-shoulder",
-    "name": "Monkey Shoulder",
-    "brand": "William Grant",
-    "category": "scotch",
-    "volume": 700,
-    "changiPriceSGD": 72,
-    "japanPriceJPY": 4200,
-    "notes": "3가지 싱글몰트 블렌딩"
-  },
-  {
-    "id": "jack-daniels",
-    "name": "Jack Daniel's Old No.7",
-    "brand": "Jack Daniel's",
-    "category": "american",
-    "volume": 700,
-    "changiPriceSGD": 52,
-    "japanPriceJPY": 2200,
-    "notes": "테네시 위스키"
-  },
-  {
-    "id": "makers-mark",
-    "name": "Maker's Mark",
-    "brand": "Maker's Mark",
-    "category": "american",
-    "volume": 700,
-    "changiPriceSGD": 62,
-    "japanPriceJPY": 3200,
-    "notes": "켄터키 버번"
-  },
-  {
-    "id": "buffalo-trace",
-    "name": "Buffalo Trace",
-    "brand": "Buffalo Trace",
-    "category": "american",
-    "volume": 700,
-    "changiPriceSGD": 58,
-    "japanPriceJPY": 3500,
-    "notes": "켄터키 버번. 입수 어려워지는 추세"
-  },
-  {
-    "id": "woodford-reserve",
-    "name": "Woodford Reserve",
-    "brand": "Woodford Reserve",
-    "category": "american",
-    "volume": 700,
-    "changiPriceSGD": 72,
-    "japanPriceJPY": 4200,
-    "notes": "켄터키 버번"
-  },
-  {
-    "id": "wild-turkey-101",
-    "name": "Wild Turkey 101",
-    "brand": "Wild Turkey",
-    "category": "american",
-    "volume": 700,
-    "changiPriceSGD": 55,
-    "japanPriceJPY": 2800,
-    "notes": "101 프루프 버번"
-  },
-  {
-    "id": "bulleit-bourbon",
-    "name": "Bulleit Bourbon",
-    "brand": "Bulleit",
-    "category": "american",
-    "volume": 700,
-    "changiPriceSGD": 65,
-    "japanPriceJPY": 3800,
-    "notes": "하이 라이 버번"
-  },
-  {
-    "id": "jameson",
-    "name": "Jameson Irish Whiskey",
-    "brand": "Jameson",
-    "category": "irish",
-    "volume": 700,
-    "changiPriceSGD": 52,
-    "japanPriceJPY": 2800,
-    "notes": "아이리시 위스키 대표"
-  },
-  {
-    "id": "redbreast-12",
-    "name": "Redbreast 12 Year",
-    "brand": "Redbreast",
-    "category": "irish",
-    "volume": 700,
-    "changiPriceSGD": 115,
-    "japanPriceJPY": 7000,
-    "notes": "아이리시 팟 스틸 위스키"
-  },
-  {
-    "id": "green-spot",
-    "name": "Green Spot",
-    "brand": "Mitchell & Son",
-    "category": "irish",
-    "volume": 700,
-    "changiPriceSGD": 88,
-    "japanPriceJPY": 4800,
-    "notes": "아이리시 팟 스틸 위스키"
-  },
-  {
-    "id": "bushmills-10",
-    "name": "Bushmills 10 Year Single Malt",
-    "brand": "Bushmills",
-    "category": "irish",
-    "volume": 700,
-    "changiPriceSGD": 72,
-    "japanPriceJPY": 4200,
-    "notes": "세계에서 가장 오래된 증류소"
-  }
-]
+  "products": [
+    {
+      "id": "hibiki-harmony",
+      "name": "Hibiki Japanese Harmony",
+      "nameKR": "히비키 저패니즈 하모니",
+      "brand": "Suntory",
+      "category": "japanese",
+      "searchTermJP": "響 ジャパニーズハーモニー",
+      "changi": { "priceSGD": 144.00, "volumeML": 700, "available": true, "notes": "Master Select (여행자 한정판)", "verifiedDate": "2026-03" },
+      "japan": { "priceJPY": 11869, "volumeML": 700, "verifiedDate": "2026-03" }
+    },
+    {
+      "id": "yamazaki-12",
+      "name": "Yamazaki 12 Year",
+      "nameKR": "야마자키 12년",
+      "brand": "Suntory",
+      "category": "japanese",
+      "searchTermJP": "山崎 12年",
+      "changi": { "priceSGD": 241.00, "volumeML": 700, "available": true, "notes": "박스 포함", "verifiedDate": "2026-03" },
+      "japan": { "priceJPY": 21879, "volumeML": 700, "verifiedDate": "2026-03" }
+    },
+    {
+      "id": "hakushu-dr",
+      "name": "Hakushu Distiller's Reserve",
+      "nameKR": "하쿠슈 디스틸러즈 리저브",
+      "brand": "Suntory",
+      "category": "japanese",
+      "searchTermJP": "白州 蒸溜所",
+      "changi": { "priceSGD": 136.60, "volumeML": 700, "available": true, "notes": "", "verifiedDate": "2026-03" },
+      "japan": { "priceJPY": 15800, "volumeML": 700, "verifiedDate": "2026-03" }
+    },
+    {
+      "id": "hakushu-12",
+      "name": "Hakushu 12 Year",
+      "nameKR": "하쿠슈 12년",
+      "brand": "Suntory",
+      "category": "japanese",
+      "searchTermJP": "白州 12年",
+      "changi": { "priceSGD": null, "volumeML": 700, "available": false, "notes": "창이 미판매", "verifiedDate": "2026-03" },
+      "japan": { "priceJPY": 23089, "volumeML": 700, "verifiedDate": "2026-03" }
+    },
+    {
+      "id": "nikka-ftb",
+      "name": "Nikka From The Barrel",
+      "nameKR": "닛카 프롬 더 배럴",
+      "brand": "Nikka",
+      "category": "japanese",
+      "searchTermJP": "ニッカ フロムザバレル",
+      "changi": { "priceSGD": null, "volumeML": 500, "available": false, "notes": "창이 미판매", "verifiedDate": "2026-03" },
+      "japan": { "priceJPY": 5888, "volumeML": 500, "verifiedDate": "2026-03" }
+    },
+    {
+      "id": "nikka-coffey-grain",
+      "name": "Nikka Coffey Grain",
+      "nameKR": "닛카 카페 그레인",
+      "brand": "Nikka",
+      "category": "japanese",
+      "searchTermJP": "ニッカ カフェグレーン",
+      "changi": { "priceSGD": null, "volumeML": 700, "available": false, "notes": "창이 미판매", "verifiedDate": "2026-03" },
+      "japan": { "priceJPY": 5473, "volumeML": 700, "verifiedDate": "2026-03" }
+    },
+    {
+      "id": "glenfiddich-12",
+      "name": "Glenfiddich 12 Year",
+      "nameKR": "글렌피딕 12년",
+      "brand": "Glenfiddich",
+      "category": "scotch",
+      "searchTermJP": "グレンフィディック 12年",
+      "changi": { "priceSGD": 110.00, "volumeML": 700, "available": true, "notes": "", "verifiedDate": "2026-03" },
+      "japan": { "priceJPY": 4608, "volumeML": 700, "verifiedDate": "2026-03" }
+    },
+    {
+      "id": "macallan-12dc",
+      "name": "The Macallan 12 Year Double Cask",
+      "nameKR": "맥캘란 12년 더블 캐스크",
+      "brand": "Macallan",
+      "category": "scotch",
+      "searchTermJP": "マッカラン 12年 ダブルカスク",
+      "changi": { "priceSGD": 102.20, "volumeML": 700, "available": true, "notes": "Colour Collection 12yr", "verifiedDate": "2026-03" },
+      "japan": { "priceJPY": 8397, "volumeML": 700, "verifiedDate": "2026-03" }
+    },
+    {
+      "id": "jw-blue",
+      "name": "Johnnie Walker Blue Label",
+      "nameKR": "조니워커 블루라벨",
+      "brand": "Johnnie Walker",
+      "category": "scotch",
+      "searchTermJP": "ジョニーウォーカー ブルーラベル",
+      "changi": { "priceSGD": 269.90, "volumeML": 1000, "available": true, "notes": "1000ml (면세점 한정 용량)", "verifiedDate": "2026-03" },
+      "japan": { "priceJPY": 18190, "volumeML": 750, "verifiedDate": "2026-03" }
+    },
+    {
+      "id": "chivas-12",
+      "name": "Chivas Regal 12 Year",
+      "nameKR": "시바스 리갈 12년",
+      "brand": "Chivas Regal",
+      "category": "scotch",
+      "searchTermJP": "シーバスリーガル 12年",
+      "changi": { "priceSGD": 45.00, "volumeML": 1000, "available": true, "notes": "1000ml", "verifiedDate": "2026-03" },
+      "japan": { "priceJPY": 2530, "volumeML": 700, "verifiedDate": "2026-03" }
+    },
+    {
+      "id": "laphroaig-10",
+      "name": "Laphroaig 10 Year",
+      "nameKR": "라프로익 10년",
+      "brand": "Laphroaig",
+      "category": "scotch",
+      "searchTermJP": "ラフロイグ 10年",
+      "changi": { "priceSGD": 108.00, "volumeML": 1000, "available": true, "notes": "1000ml", "verifiedDate": "2026-03" },
+      "japan": { "priceJPY": 5035, "volumeML": 700, "verifiedDate": "2026-03" }
+    },
+    {
+      "id": "glenlivet-12",
+      "name": "The Glenlivet 12 Year",
+      "nameKR": "글렌리벳 12년",
+      "brand": "Glenlivet",
+      "category": "scotch",
+      "searchTermJP": "グレンリベット 12年",
+      "changi": { "priceSGD": 75.00, "volumeML": 700, "available": true, "notes": "", "verifiedDate": "2026-03" },
+      "japan": { "priceJPY": 4513, "volumeML": 700, "verifiedDate": "2026-03" }
+    },
+    {
+      "id": "monkey-shoulder",
+      "name": "Monkey Shoulder",
+      "nameKR": "몽키 숄더",
+      "brand": "William Grant",
+      "category": "scotch",
+      "searchTermJP": "モンキーショルダー",
+      "changi": { "priceSGD": 55.60, "volumeML": 700, "available": true, "notes": "", "verifiedDate": "2026-03" },
+      "japan": { "priceJPY": 3908, "volumeML": 700, "verifiedDate": "2026-03" }
+    },
+    {
+      "id": "jack-daniels",
+      "name": "Jack Daniel's Old No.7",
+      "nameKR": "잭 다니엘스 No.7",
+      "brand": "Jack Daniel's",
+      "category": "american",
+      "searchTermJP": "ジャックダニエル",
+      "changi": { "priceSGD": 41.00, "volumeML": 1000, "available": true, "notes": "1000ml", "verifiedDate": "2026-03" },
+      "japan": { "priceJPY": 2400, "volumeML": 700, "verifiedDate": "2026-03" }
+    },
+    {
+      "id": "makers-mark",
+      "name": "Maker's Mark",
+      "nameKR": "메이커스 마크",
+      "brand": "Maker's Mark",
+      "category": "american",
+      "searchTermJP": "メーカーズマーク",
+      "changi": { "priceSGD": 62.00, "volumeML": 1000, "available": true, "notes": "1000ml 45%", "verifiedDate": "2026-03" },
+      "japan": { "priceJPY": 1958, "volumeML": 700, "verifiedDate": "2026-03" }
+    },
+    {
+      "id": "jameson",
+      "name": "Jameson Irish Whiskey",
+      "nameKR": "제임슨",
+      "brand": "Jameson",
+      "category": "irish",
+      "searchTermJP": "ジェムソン",
+      "changi": { "priceSGD": 48.50, "volumeML": 1000, "available": true, "notes": "1000ml", "verifiedDate": "2026-03" },
+      "japan": { "priceJPY": 1961, "volumeML": 700, "verifiedDate": "2026-03" }
+    },
+    {
+      "id": "jw-black",
+      "name": "Johnnie Walker Black Label",
+      "nameKR": "조니워커 블랙라벨",
+      "brand": "Johnnie Walker",
+      "category": "scotch",
+      "searchTermJP": "ジョニーウォーカー ブラックラベル",
+      "changi": { "priceSGD": 52.00, "volumeML": 1000, "available": true, "notes": "1000ml", "verifiedDate": "2026-03" },
+      "japan": { "priceJPY": 2780, "volumeML": 700, "verifiedDate": "2026-03" }
+    },
+    {
+      "id": "jw-gold",
+      "name": "Johnnie Walker Gold Label Reserve",
+      "nameKR": "조니워커 골드라벨",
+      "brand": "Johnnie Walker",
+      "category": "scotch",
+      "searchTermJP": "ジョニーウォーカー ゴールドラベル",
+      "changi": { "priceSGD": 69.00, "volumeML": 700, "available": true, "notes": "", "verifiedDate": "2026-03" },
+      "japan": { "priceJPY": 5200, "volumeML": 700, "verifiedDate": "2026-03" }
+    },
+    {
+      "id": "ballantines-17",
+      "name": "Ballantine's 17 Year",
+      "nameKR": "발렌타인 17년",
+      "brand": "Ballantine's",
+      "category": "scotch",
+      "searchTermJP": "バランタイン 17年",
+      "changi": { "priceSGD": 85.00, "volumeML": 700, "available": true, "notes": "", "verifiedDate": "2026-03" },
+      "japan": { "priceJPY": 5500, "volumeML": 700, "verifiedDate": "2026-03" }
+    },
+    {
+      "id": "bowmore-12",
+      "name": "Bowmore 12 Year",
+      "nameKR": "보모어 12년",
+      "brand": "Bowmore",
+      "category": "scotch",
+      "searchTermJP": "ボウモア 12年",
+      "changi": { "priceSGD": 95.00, "volumeML": 700, "available": true, "notes": "", "verifiedDate": "2026-03" },
+      "japan": { "priceJPY": 4100, "volumeML": 700, "verifiedDate": "2026-03" }
+    },
+    {
+      "id": "highland-park-12",
+      "name": "Highland Park 12 Year Viking Honour",
+      "nameKR": "하이랜드 파크 12년",
+      "brand": "Highland Park",
+      "category": "scotch",
+      "searchTermJP": "ハイランドパーク 12年",
+      "changi": { "priceSGD": 88.00, "volumeML": 700, "available": true, "notes": "", "verifiedDate": "2026-03" },
+      "japan": { "priceJPY": 4680, "volumeML": 700, "verifiedDate": "2026-03" }
+    },
+    {
+      "id": "talisker-10",
+      "name": "Talisker 10 Year",
+      "nameKR": "탈리스커 10년",
+      "brand": "Talisker",
+      "category": "scotch",
+      "searchTermJP": "タリスカー 10年",
+      "changi": { "priceSGD": 85.00, "volumeML": 700, "available": true, "notes": "", "verifiedDate": "2026-03" },
+      "japan": { "priceJPY": 4350, "volumeML": 700, "verifiedDate": "2026-03" }
+    },
+    {
+      "id": "oban-14",
+      "name": "Oban 14 Year",
+      "nameKR": "오반 14년",
+      "brand": "Oban",
+      "category": "scotch",
+      "searchTermJP": "オーバン 14年",
+      "changi": { "priceSGD": 115.00, "volumeML": 700, "available": true, "notes": "", "verifiedDate": "2026-03" },
+      "japan": { "priceJPY": 6800, "volumeML": 700, "verifiedDate": "2026-03" }
+    },
+    {
+      "id": "wild-turkey-101",
+      "name": "Wild Turkey 101",
+      "nameKR": "와일드 터키 101",
+      "brand": "Wild Turkey",
+      "category": "american",
+      "searchTermJP": "ワイルドターキー 101",
+      "changi": { "priceSGD": 55.00, "volumeML": 1000, "available": true, "notes": "1000ml", "verifiedDate": "2026-03" },
+      "japan": { "priceJPY": 2680, "volumeML": 700, "verifiedDate": "2026-03" }
+    },
+    {
+      "id": "redbreast-12",
+      "name": "Redbreast 12 Year",
+      "nameKR": "레드브레스트 12년",
+      "brand": "Redbreast",
+      "category": "irish",
+      "searchTermJP": "レッドブレスト 12年",
+      "changi": { "priceSGD": 115.00, "volumeML": 700, "available": true, "notes": "", "verifiedDate": "2026-03" },
+      "japan": { "priceJPY": 6500, "volumeML": 700, "verifiedDate": "2026-03" }
+    }
+  ]
+}
