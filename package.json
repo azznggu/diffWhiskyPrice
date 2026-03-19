@@ -6,6 +6,8 @@
     "node": ">=18"
   },
   "scripts": {
-    "dev": "netlify dev"
+    "dev": "netlify dev",
+    "sync-data": "cp data/whiskies.json public/data.json",
+    "update-prices": "node scripts/update-japan-prices.mjs && npm run sync-data"
   }
 }

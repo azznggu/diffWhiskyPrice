@@ -285,7 +285,7 @@ async function loadRate() {
 
 async function loadData() {
   try {
-    const d = await (await fetch('/.netlify/functions/whisky-prices')).json();
+    const d = await (await fetch('/data.json')).json();
     products = d.products;
     $('srcChangi').textContent = d.meta.changiSource;
     $('srcJapan').textContent = d.meta.japanSource;
@@ -342,13 +342,25 @@ function stats(list) {
   const comparable = list.filter(p => p.changi.available && p.changi.priceSGD);
   const diffs = comparable.map(calc).filter(Boolean);
   const wins = diffs.filter(d => d.diff > 0);
+  const losses = diffs.filter(d => d.diff < 0);
   const maxSav = diffs.reduce((m,d) => d.diff>m?d.diff:m, -Infinity);
   const maxPct = diffs.reduce((m,d) => d.pct>m?d.pct:m, -Infinity);
+  const minLoss = losses.length ? losses.reduce((m,d) => Math.abs(d.diff)<Math.abs(m.diff)?d:m) : null;
 
   $('s-cnt').textContent = comparable.length + '종';
   $('s-win').textContent = wins.length + '종';
-  $('s-best').textContent = maxSav>0 ? '¥'+fmt(Math.round(maxSav)) : '-';
-  $('s-bpct').textContent = maxPct>0 ? fmt(maxPct,1)+'%' : '-';
+  if (maxSav > 0) {
+    $('s-best').textContent = '¥'+fmt(Math.round(maxSav));
+    $('s-bpct').textContent = fmt(maxPct,1)+'%';
+  } else if (minLoss) {
+    $('s-best').textContent = '¥'+fmt(Math.round(Math.abs(minLoss.diff)));
+    $('s-best').parentElement.querySelector('.st-l').textContent = '최소 차이(¥)';
+    $('s-bpct').textContent = fmt(Math.abs(minLoss.pct),1)+'%';
+    $('s-bpct').parentElement.querySelector('.st-l').textContent = '최소 차이(%)';
+  } else {
+    $('s-best').textContent = '-';
+    $('s-bpct').textContent = '-';
+  }
   $('listCnt').textContent = list.length + '개';
 }
 
