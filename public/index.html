@@ -220,9 +220,9 @@
   <div class="search-w"><input type="search" id="search" placeholder="위스키 이름 · 브랜드 검색..." autocomplete="off"/></div>
   <div class="filter-r" id="filters">
     <button class="fbtn on" data-c="all">전체</button>
-    <button class="fbtn" data-c="japanese">🇯🇵 일본</button>
-    <button class="fbtn" data-c="scotch">🏴󠁧󠁢󠁳󠁣󠁴󠁿 스카치</button>
-    <button class="fbtn" data-c="american">🇺🇸 아메리칸</button>
+    <button class="fbtn" data-c="islay">🌊 아일라</button>
+    <button class="fbtn" data-c="speyside">🏔 스페이사이드</button>
+    <button class="fbtn" data-c="island,highland">🏝 아일랜드/하이랜드</button>
     <button class="fbtn" data-c="irish">🇮🇪 아이리시</button>
   </div>
   <div class="sort-r">
@@ -317,7 +317,7 @@ function calc(p) {
 
 function filtered() {
   let list = products.filter(p => {
-    if (cat !== 'all' && p.category !== cat) return false;
+    if (cat !== 'all' && !cat.split(',').includes(p.category)) return false;
     if (q) {
       const s = q.toLowerCase();
       if (!p.name.toLowerCase().includes(s) && !p.brand.toLowerCase().includes(s) && !(p.nameKR||'').includes(s)) return false;
@@ -368,7 +368,7 @@ function card(p) {
   const d = calc(p);
   const ok = d !== null;
   const win = ok && d.diff > 0;
-  const ce = { japanese:'🇯🇵', scotch:'🥃', american:'🇺🇸', irish:'🇮🇪' }[p.category]||'';
+  const ce = { islay:'🌊', speyside:'🏔', island:'🏝', highland:'⛰️', irish:'🇮🇪' }[p.category]||'';
   const volDiff = p.changi.volumeML !== p.japan.volumeML;
 
   let badgeHtml = '';
