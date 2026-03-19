@@ -37,8 +37,10 @@ async function searchYahoo(page, searchTerm) {
     const results = await page.evaluate((min) => {
       const items_found = [];
 
-      // 검색 결과 아이템 단위로 처리
-      const items = document.querySelectorAll('[class*="ProductList"] li, [class*="mdSearchResult"] li, [class*="item-card"], [class*="Product_product"]');
+      // Yahoo Shopping 검색 결과 아이템 단위로 처리
+      const items = document.querySelectorAll(
+        '[class*="SearchResultItem__mJ7vY"], [class*="SearchResult_SearchResultItem"], [class*="ProductList"] li, [class*="mdSearchResult"] li'
+      );
       for (const item of items) {
         const text = item.textContent || '';
         // 미니어처/샘플 제외
@@ -49,8 +51,11 @@ async function searchYahoo(page, searchTerm) {
         if (m) {
           const p = parseInt(m[1].replace(/,/g, ''));
           if (p >= min) {
-            // 아이템 내 링크 추출
-            const link = item.querySelector('a[href*="shopping.yahoo"]') || item.querySelector('a[href]');
+            // 상품 상세 링크 추출 (detailLink > 이미지링크 > 기타)
+            const link = item.querySelector('a[class*="detailLink"]')
+              || item.querySelector('a[class*="ImageLink"]')
+              || item.querySelector('a[href*="store.shopping.yahoo"]')
+              || item.querySelector('a[href]');
             const href = link ? link.href : null;
             items_found.push({ price: p, url: href });
           }
@@ -59,7 +64,7 @@ async function searchYahoo(page, searchTerm) {
 
       // 폴백: 가격 요소에서 직접 추출 (링크 없음)
       if (items_found.length === 0) {
-        const priceEls = document.querySelectorAll('[class*="Price"], [class*="price"]');
+        const priceEls = document.querySelectorAll('[class*="ItemPrice"], [class*="Price"], [class*="price"]');
         for (const el of priceEls) {
           const text = el.textContent || '';
           const m = text.match(/([\d,]+)\s*円/) || text.match(/¥\s*([\d,]+)/);
