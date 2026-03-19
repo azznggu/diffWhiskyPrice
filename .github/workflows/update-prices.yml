@@ -57,6 +57,9 @@ jobs:
           git pull --rebase origin main
           git push
 
-      - name: Trigger Netlify deploy
+      - name: Deploy to Netlify
         if: steps.check.outputs.changed == 'true'
-        run: curl -s -X POST "${{ secrets.NETLIFY_BUILD_HOOK }}"
+        run: npx netlify-cli deploy --prod --dir=public --functions=netlify/functions
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
