@@ -419,7 +419,7 @@ function card(p) {
       <div class="p-cell">
         <div class="p-label">🗾 일본 최저가</div>
         <div class="p-val japan">¥${fmt(p.japan.priceJPY)}</div>
-        <div class="p-sub">&nbsp;</div>
+        <div class="p-sub">${p.japan.sourceUrl ? `<a href="${p.japan.sourceUrl}" target="_blank" rel="noopener" style="color:var(--blue);text-decoration:none;font-size:9px;">출처 보기 ↗</a>` : '&nbsp;'}</div>
         ${perMl ? `<div class="p-sub per-ml">${japanPerMl}</div>` : ''}
       </div>
       <div class="p-cell">

@@ -34,8 +34,8 @@ async function searchYahoo(page, searchTerm) {
     await page.waitForSelector('[class*="Product"], [class*="item"], [class*="mdSearchResult"]', { timeout: 10000 }).catch(() => {});
     await sleep(2000);
 
-    const prices = await page.evaluate((min) => {
-      const results = [];
+    const results = await page.evaluate((min) => {
+      const items_found = [];
 
       // 검색 결과 아이템 단위로 처리
       const items = document.querySelectorAll('[class*="ProductList"] li, [class*="mdSearchResult"] li, [class*="item-card"], [class*="Product_product"]');
@@ -48,30 +48,37 @@ async function searchYahoo(page, searchTerm) {
         const m = text.match(/([\d,]+)\s*円/) || text.match(/¥\s*([\d,]+)/);
         if (m) {
           const p = parseInt(m[1].replace(/,/g, ''));
-          if (p >= min) results.push(p);
+          if (p >= min) {
+            // 아이템 내 링크 추출
+            const link = item.querySelector('a[href*="shopping.yahoo"]') || item.querySelector('a[href]');
+            const href = link ? link.href : null;
+            items_found.push({ price: p, url: href });
+          }
         }
       }
 
-      // 폴백: 가격 요소에서 직접 추출
-      if (results.length === 0) {
+      // 폴백: 가격 요소에서 직접 추출 (링크 없음)
+      if (items_found.length === 0) {
         const priceEls = document.querySelectorAll('[class*="Price"], [class*="price"]');
         for (const el of priceEls) {
           const text = el.textContent || '';
           const m = text.match(/([\d,]+)\s*円/) || text.match(/¥\s*([\d,]+)/);
           if (m) {
             const p = parseInt(m[1].replace(/,/g, ''));
-            if (p >= min) results.push(p);
+            if (p >= min) items_found.push({ price: p, url: null });
           }
         }
       }
 
-      return results;
+      return items_found;
     }, MIN_PRICE);
 
-    if (prices.length > 0) {
-      const min = Math.min(...prices);
-      console.log(`      → ¥${min.toLocaleString()} (${prices.length}건 중 최저가)`);
-      return min;
+    if (results.length > 0) {
+      // 최저가 아이템 찾기
+      const best = results.reduce((a, b) => a.price <= b.price ? a : b);
+      console.log(`      → ¥${best.price.toLocaleString()} (${results.length}건 중 최저가)`);
+      if (best.url) console.log(`      → ${best.url}`);
+      return { price: best.price, url: best.url || null };
     }
     console.log(`      → 가격 미발견`);
     return null;
@@ -113,23 +120,25 @@ async function main() {
 
     console.log(`\n🔎 ${product.nameKR} (${product.name})`);
 
-    const yahooPrice = await searchYahoo(page, term);
+    const yahooResult = await searchYahoo(page, term);
     await sleep(DELAY_MS);
 
-    if (yahooPrice !== null) {
+    if (yahooResult !== null) {
       const old = product.japan.priceJPY;
-      product.japan.priceJPY = yahooPrice;
+      product.japan.priceJPY = yahooResult.price;
       product.japan.verifiedDate = today;
-      product.japan.source = `yahoo:¥${yahooPrice.toLocaleString()}`;
+      product.japan.source = `yahoo:¥${yahooResult.price.toLocaleString()}`;
+      product.japan.sourceUrl = yahooResult.url || null;
 
-      const diff = old ? yahooPrice - old : 0;
+      const diff = old ? yahooResult.price - old : 0;
       const arrow = old ? (diff > 0 ? '↑' : diff < 0 ? '↓' : '=') : '🆕';
-      console.log(`  ✅ 최저가: ¥${yahooPrice.toLocaleString()} (이전: ${old ? '¥'+old.toLocaleString() : '없음'} ${arrow})`);
+      console.log(`  ✅ 최저가: ¥${yahooResult.price.toLocaleString()} (이전: ${old ? '¥'+old.toLocaleString() : '없음'} ${arrow})`);
       updated++;
     } else {
       console.log(`  ❌ 가격 조회 실패`);
       product.japan.verifiedDate = '';
       product.japan.source = 'failed';
+      product.japan.sourceUrl = null;
     }
   }
 
