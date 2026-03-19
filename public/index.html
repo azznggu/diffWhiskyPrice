@@ -420,6 +420,7 @@ function card(p) {
         ${p.changi.available && p.changi.priceSGD
           ? `<div class="p-val changi">S$${fmt(p.changi.priceSGD)}</div>
              <div class="p-sub">${changiJpyStr}</div>
+             ${p.changi.sourceUrl ? `<div class="p-sub"><a href="${p.changi.sourceUrl}" target="_blank" rel="noopener" style="color:var(--amber-light);text-decoration:none;font-size:9px;">출처 보기 ↗</a></div>` : ''}
              ${perMl ? `<div class="p-sub per-ml">${changiPerMl}</div>` : ''}`
           : '<div class="p-val na">미판매</div>'}
       </div>

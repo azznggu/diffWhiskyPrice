@@ -100,8 +100,15 @@ async function scrapeBrandPage(page, brand, brandPath) {
           price = Math.min(...prices);
         }
 
+        // 상품 링크 추출
+        const linkEl = tile.querySelector('a[href*="/en/"]') || tile.querySelector('a[href]');
+        let href = linkEl ? linkEl.getAttribute('href') : null;
+        if (href && !href.startsWith('http')) {
+          href = 'https://www.ishopchangi.com' + href;
+        }
+
         if (price) {
-          results.push({ name: text.trim().substring(0, 200), price });
+          results.push({ name: text.trim().substring(0, 200), price, url: href });
         }
       }
       return results;
@@ -180,15 +187,18 @@ async function main() {
       product.changi.volumeML = volume;
       product.changi.available = true;
       product.changi.verifiedDate = today;
+      product.changi.sourceUrl = matched.url || null;
       delete product.changi.notes;
 
       const arrow = oldPrice ? (matched.price > oldPrice ? '↑' : matched.price < oldPrice ? '↓' : '=') : '🆕';
       console.log(`  ✅ ${product.nameKR}: S$${matched.price} ${volume}ml (이전: ${oldPrice ? 'S$'+oldPrice : '없음'} ${arrow})`);
+      if (matched.url) console.log(`     → ${matched.url}`);
       updated++;
     } else {
       product.changi.priceSGD = null;
       product.changi.available = false;
       product.changi.verifiedDate = today;
+      product.changi.sourceUrl = null;
       product.changi.notes = '자동 스크래핑 미발견';
       console.log(`  ❌ ${product.nameKR}: 매칭 실패 → 미판매 처리`);
     }
