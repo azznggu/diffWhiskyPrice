@@ -13,16 +13,16 @@
       "category": "speyside",
       "searchTermJP": "マッカラン 12年",
       "changi": {
-        "priceSGD": null,
+        "priceSGD": 102.2,
         "volumeML": 700,
-        "available": false,
+        "available": true,
         "verifiedDate": "2026-03-19"
       },
       "japan": {
-        "priceJPY": null,
+        "priceJPY": 7999,
         "volumeML": 700,
-        "verifiedDate": "",
-        "source": ""
+        "verifiedDate": "2026-03-19",
+        "source": "yahoo:¥7,999"
       }
     },
     {
@@ -33,16 +33,16 @@
       "category": "speyside",
       "searchTermJP": "マッカラン 18年",
       "changi": {
-        "priceSGD": null,
+        "priceSGD": 446.9,
         "volumeML": 700,
-        "available": false,
+        "available": true,
         "verifiedDate": "2026-03-19"
       },
       "japan": {
-        "priceJPY": null,
+        "priceJPY": 42000,
         "volumeML": 700,
-        "verifiedDate": "",
-        "source": ""
+        "verifiedDate": "2026-03-19",
+        "source": "yahoo:¥42,000"
       }
     },
     {
@@ -53,9 +53,9 @@
       "category": "islay",
       "searchTermJP": "ラガヴーリン 16年",
       "changi": {
-        "priceSGD": null,
+        "priceSGD": 129.7,
         "volumeML": 700,
-        "available": false,
+        "available": true,
         "verifiedDate": "2026-03-19"
       },
       "japan": {
@@ -73,16 +73,16 @@
       "category": "islay",
       "searchTermJP": "ラガヴーリン 10年",
       "changi": {
-        "priceSGD": null,
+        "priceSGD": 119,
         "volumeML": 700,
-        "available": false,
+        "available": true,
         "verifiedDate": "2026-03-19"
       },
       "japan": {
-        "priceJPY": null,
+        "priceJPY": 3980,
         "volumeML": 700,
-        "verifiedDate": "",
-        "source": ""
+        "verifiedDate": "2026-03-19",
+        "source": "yahoo:¥3,980"
       }
     },
     {
@@ -93,9 +93,9 @@
       "category": "islay",
       "searchTermJP": "ラフロイグ 10年",
       "changi": {
-        "priceSGD": null,
+        "priceSGD": 108,
         "volumeML": 1000,
-        "available": false,
+        "available": true,
         "verifiedDate": "2026-03-19"
       },
       "japan": {
@@ -113,16 +113,16 @@
       "category": "islay",
       "searchTermJP": "ラフロイグ 12年",
       "changi": {
-        "priceSGD": null,
+        "priceSGD": 88,
         "volumeML": 700,
-        "available": false,
+        "available": true,
         "verifiedDate": "2026-03-19"
       },
       "japan": {
-        "priceJPY": null,
+        "priceJPY": 2540,
         "volumeML": 700,
-        "verifiedDate": "",
-        "source": ""
+        "verifiedDate": "2026-03-19",
+        "source": "yahoo:¥2,540"
       }
     },
     {
@@ -133,9 +133,9 @@
       "category": "islay",
       "searchTermJP": "アードベッグ 10年",
       "changi": {
-        "priceSGD": null,
+        "priceSGD": 85,
         "volumeML": 1000,
-        "available": false,
+        "available": true,
         "verifiedDate": "2026-03-19"
       },
       "japan": {
@@ -153,9 +153,9 @@
       "category": "irish",
       "searchTermJP": "レッドブレスト 12年",
       "changi": {
-        "priceSGD": null,
+        "priceSGD": 69.7,
         "volumeML": 700,
-        "available": false,
+        "available": true,
         "verifiedDate": "2026-03-19"
       },
       "japan": {
@@ -173,9 +173,9 @@
       "category": "speyside",
       "searchTermJP": "オルトモア 12年",
       "changi": {
-        "priceSGD": null,
+        "priceSGD": 60,
         "volumeML": 500,
-        "available": false,
+        "available": true,
         "verifiedDate": "2026-03-19"
       },
       "japan": {
@@ -193,16 +193,16 @@
       "category": "islay",
       "searchTermJP": "ボウモア 11年",
       "changi": {
-        "priceSGD": null,
+        "priceSGD": 69,
         "volumeML": 700,
-        "available": false,
+        "available": true,
         "verifiedDate": "2026-03-19"
       },
       "japan": {
-        "priceJPY": null,
+        "priceJPY": 8900,
         "volumeML": 700,
-        "verifiedDate": "",
-        "source": ""
+        "verifiedDate": "2026-03-19",
+        "source": "yahoo:¥8,900"
       }
     },
     {
@@ -213,16 +213,16 @@
       "category": "speyside",
       "searchTermJP": "グレンフィディック",
       "changi": {
-        "priceSGD": null,
+        "priceSGD": 140.1,
         "volumeML": 1000,
-        "available": false,
+        "available": true,
         "verifiedDate": "2026-03-19"
       },
       "japan": {
-        "priceJPY": null,
+        "priceJPY": 4080,
         "volumeML": 700,
-        "verifiedDate": "",
-        "source": ""
+        "verifiedDate": "2026-03-19",
+        "source": "yahoo:¥4,080"
       }
     },
     {
@@ -233,16 +233,16 @@
       "category": "island",
       "searchTermJP": "ハイランドパーク 14年",
       "changi": {
-        "priceSGD": null,
+        "priceSGD": 91,
         "volumeML": 700,
-        "available": false,
+        "available": true,
         "verifiedDate": "2026-03-19"
       },
       "japan": {
-        "priceJPY": null,
+        "priceJPY": 3980,
         "volumeML": 700,
-        "verifiedDate": "",
-        "source": ""
+        "verifiedDate": "2026-03-19",
+        "source": "yahoo:¥3,980"
       }
     },
     {
@@ -253,9 +253,9 @@
       "category": "island",
       "searchTermJP": "タリスカー 10年",
       "changi": {
-        "priceSGD": null,
+        "priceSGD": 99,
         "volumeML": 1000,
-        "available": false,
+        "available": true,
         "verifiedDate": "2026-03-19"
       },
       "japan": {
@@ -273,9 +273,9 @@
       "category": "highland",
       "searchTermJP": "オーバン 14年",
       "changi": {
-        "priceSGD": null,
+        "priceSGD": 151,
         "volumeML": 700,
-        "available": false,
+        "available": true,
         "verifiedDate": "2026-03-19"
       },
       "japan": {
