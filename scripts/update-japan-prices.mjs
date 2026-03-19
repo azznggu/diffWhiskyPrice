@@ -1,98 +1,174 @@
 /**
  * 일본 시장 위스키 최저가 자동 갱신 스크립트
- * Rakuten 검색 페이지 스크래핑으로 실제 시장 최저가를 수집합니다.
- * GitHub Action 또는 로컬에서 실행 가능.
+ * Playwright로 Rakuten + Yahoo Shopping 검색 결과를 스크래핑하여 최저가를 수집합니다.
  *
  * Usage: node scripts/update-japan-prices.mjs
+ * 사전 요구: npx playwright install chromium
  */
 
 import { readFileSync, writeFileSync } from 'fs';
 import { resolve, dirname } from 'path';
 import { fileURLToPath } from 'url';
+import { chromium } from 'playwright';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const DATA_PATH = resolve(__dirname, '../data/whiskies.json');
 
-const DELAY_MS = 2000; // Rakuten 요청 간 간격 (rate limit 방지)
+const DELAY_MS = 3000;
 
 function sleep(ms) { return new Promise(r => setTimeout(r, ms)); }
 
-async function searchRakutenMinPrice(searchTerm) {
+/**
+ * Rakuten 검색 → 가격 추출 (Playwright)
+ */
+async function searchRakuten(page, searchTerm) {
   const url = `https://search.rakuten.co.jp/search/mall/${encodeURIComponent(searchTerm)}/?s=2`; // s=2: 가격 오름차순
+  console.log(`    [Rakuten] "${searchTerm}"`);
+
   try {
-    const res = await fetch(url, {
-      headers: {
-        'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
-        'Accept-Language': 'ja,en;q=0.9',
-        'Accept': 'text/html,application/xhtml+xml',
-      },
-    });
-    if (!res.ok) {
-      console.warn(`  ⚠️ HTTP ${res.status} for "${searchTerm}"`);
-      return null;
-    }
-    const html = await res.text();
+    await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 20000 });
+    await page.waitForSelector('.searchresultitem, [class*="dui-card"], [class*="product"]', { timeout: 10000 }).catch(() => {});
+    await sleep(1500);
 
-    // Rakuten 검색 결과에서 가격 추출 (JSON-LD 또는 HTML 패턴)
-    // 패턴 1: JSON-LD Product 스키마
-    const jsonLdMatch = html.match(/<script[^>]*type="application\/ld\+json"[^>]*>([\s\S]*?)<\/script>/gi);
-    if (jsonLdMatch) {
-      for (const block of jsonLdMatch) {
-        try {
-          const jsonStr = block.replace(/<\/?script[^>]*>/gi, '');
-          const data = JSON.parse(jsonStr);
-          if (data['@type'] === 'ItemList' && data.itemListElement) {
-            const prices = data.itemListElement
-              .map(item => item.item?.offers?.price || item.item?.offers?.lowPrice)
-              .filter(p => p && p > 100) // 100엔 미만 필터 (잡화 제외)
-              .map(Number);
-            if (prices.length > 0) return Math.min(...prices);
+    const prices = await page.evaluate(() => {
+      const results = [];
+
+      // 방법 1: 검색 결과 아이템에서 가격 추출
+      const items = document.querySelectorAll('.searchresultitem, [class*="dui-card"], [class*="searchresultitem"]');
+      for (const item of items) {
+        const text = item.textContent || '';
+        // 가격 패턴: XX,XXX円 또는 ¥XX,XXX
+        const priceMatches = text.match(/(?:¥|￥)\s*([\d,]+)|(\d{1,3}(?:,\d{3})+)\s*円/g);
+        if (priceMatches) {
+          for (const pm of priceMatches) {
+            const numStr = pm.replace(/[¥￥円\s]/g, '').replace(/,/g, '');
+            const p = parseInt(numStr);
+            if (p > 1000 && p < 300000) results.push(p);
           }
-        } catch {}
+        }
       }
-    }
 
-    // 패턴 2: HTML에서 가격 패턴 추출
-    const pricePattern = /data-price="(\d+)"/g;
-    const prices = [];
-    let match;
-    while ((match = pricePattern.exec(html)) !== null) {
-      const p = parseInt(match[1]);
-      if (p > 500 && p < 500000) prices.push(p); // 합리적 범위
-    }
-    if (prices.length > 0) return Math.min(...prices);
+      // 방법 2: 전체 페이지에서 data-price 속성
+      if (results.length === 0) {
+        document.querySelectorAll('[data-price]').forEach(el => {
+          const p = parseInt(el.getAttribute('data-price'));
+          if (p > 1000 && p < 300000) results.push(p);
+        });
+      }
 
-    // 패턴 3: 가격 텍스트에서 추출
-    const textPricePattern = /class="[^"]*price[^"]*"[^>]*>[\s\S]*?([0-9,]+)\s*<span[^>]*>円/gi;
-    while ((match = textPricePattern.exec(html)) !== null) {
-      const p = parseInt(match[1].replace(/,/g, ''));
-      if (p > 500 && p < 500000) prices.push(p);
-    }
-    if (prices.length > 0) return Math.min(...prices);
+      // 방법 3: 전체 페이지에서 가격 텍스트
+      if (results.length === 0) {
+        const allText = document.body.innerText;
+        const generalPattern = /(\d{1,3}(?:,\d{3})+)\s*円/g;
+        let m;
+        while ((m = generalPattern.exec(allText)) !== null) {
+          const p = parseInt(m[1].replace(/,/g, ''));
+          if (p > 1000 && p < 300000) results.push(p);
+        }
+      }
 
-    // 패턴 4: 일반적인 가격 형식 ¥XX,XXX 또는 XX,XXX円
-    const generalPattern = /(?:¥|￥)([0-9,]+)|([0-9,]+)\s*円/g;
-    while ((match = generalPattern.exec(html)) !== null) {
-      const p = parseInt((match[1] || match[2]).replace(/,/g, ''));
-      if (p > 500 && p < 500000) prices.push(p);
-    }
-    if (prices.length > 0) return Math.min(...prices);
+      return results;
+    });
 
-    console.warn(`  ⚠️ No price found for "${searchTerm}"`);
+    if (prices.length > 0) {
+      const min = Math.min(...prices);
+      console.log(`      → ¥${min.toLocaleString()} (${prices.length}건 중 최저가)`);
+      return min;
+    }
+    console.log(`      → 가격 미발견`);
     return null;
   } catch (err) {
-    console.error(`  ❌ Error for "${searchTerm}": ${err.message}`);
+    console.log(`      → 에러: ${err.message}`);
+    return null;
+  }
+}
+
+/**
+ * Yahoo Shopping 검색 → 가격 추출 (Playwright)
+ */
+async function searchYahoo(page, searchTerm) {
+  const url = `https://shopping.yahoo.co.jp/search?p=${encodeURIComponent(searchTerm)}&X=2&sort=%2Bprice`;
+  console.log(`    [Yahoo]   "${searchTerm}"`);
+
+  try {
+    await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 20000 });
+    await page.waitForSelector('[class*="Product"], [class*="item"], [class*="mdSearchResult"]', { timeout: 10000 }).catch(() => {});
+    await sleep(1500);
+
+    const prices = await page.evaluate(() => {
+      const results = [];
+
+      // 검색 결과의 가격 요소
+      const priceEls = document.querySelectorAll(
+        '[class*="Price"], [class*="price"], [data-price]'
+      );
+      for (const el of priceEls) {
+        // data-price 속성
+        const dp = el.getAttribute('data-price');
+        if (dp) {
+          const p = parseInt(dp);
+          if (p > 1000 && p < 300000) results.push(p);
+          continue;
+        }
+        // 텍스트에서 가격 추출
+        const text = el.textContent || '';
+        const m = text.match(/([\d,]+)\s*円/) || text.match(/¥\s*([\d,]+)/);
+        if (m) {
+          const p = parseInt(m[1].replace(/,/g, ''));
+          if (p > 1000 && p < 300000) results.push(p);
+        }
+      }
+
+      // 폴백: 전체 텍스트에서 가격 패턴
+      if (results.length === 0) {
+        const items = document.querySelectorAll('[class*="mdSearchResult"] li, [class*="Product"], [class*="item-card"]');
+        for (const item of items) {
+          const text = item.textContent || '';
+          const m = text.match(/([\d,]+)\s*円/);
+          if (m) {
+            const p = parseInt(m[1].replace(/,/g, ''));
+            if (p > 1000 && p < 300000) results.push(p);
+          }
+        }
+      }
+
+      return results;
+    });
+
+    if (prices.length > 0) {
+      const min = Math.min(...prices);
+      console.log(`      → ¥${min.toLocaleString()} (${prices.length}건 중 최저가)`);
+      return min;
+    }
+    console.log(`      → 가격 미발견`);
+    return null;
+  } catch (err) {
+    console.log(`      → 에러: ${err.message}`);
     return null;
   }
 }
 
 async function main() {
-  console.log('📦 Loading data...');
-  const data = JSON.parse(readFileSync(DATA_PATH, 'utf-8'));
-  let updated = 0;
-  const today = new Date().toISOString().split('T')[0];
+  console.log('🚀 일본 시장 위스키 최저가 자동 갱신 시작 (Playwright)...\n');
 
-  console.log(`🔍 Fetching Japan prices for ${data.products.length} products...\n`);
+  const data = JSON.parse(readFileSync(DATA_PATH, 'utf-8'));
+  const today = new Date().toISOString().split('T')[0];
+  let updated = 0;
+
+  const browser = await chromium.launch({
+    headless: true,
+    args: ['--no-sandbox', '--disable-setuid-sandbox'],
+  });
+
+  const context = await browser.newContext({
+    userAgent: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+    viewport: { width: 1280, height: 800 },
+    locale: 'ja-JP',
+  });
+
+  const page = await context.newPage();
+
+  console.log(`🔍 ${data.products.length}개 제품 가격 조회 시작...\n`);
 
   for (const product of data.products) {
     const term = product.searchTermJP;
@@ -101,31 +177,53 @@ async function main() {
       continue;
     }
 
-    console.log(`🔎 ${product.name} → "${term}"`);
-    const price = await searchRakutenMinPrice(term);
+    console.log(`\n🔎 ${product.nameKR} (${product.name})`);
 
-    if (price !== null) {
+    // Rakuten 검색
+    const rakutenPrice = await searchRakuten(page, term);
+    await sleep(DELAY_MS);
+
+    // Yahoo Shopping 검색
+    const yahooPrice = await searchYahoo(page, term);
+    await sleep(DELAY_MS);
+
+    // 두 소스 중 최저가 선택
+    const prices = [rakutenPrice, yahooPrice].filter(p => p !== null);
+
+    if (prices.length > 0) {
+      const bestPrice = Math.min(...prices);
+      const source = bestPrice === rakutenPrice ? 'rakuten' : 'yahoo';
       const old = product.japan.priceJPY;
-      product.japan.priceJPY = price;
+      product.japan.priceJPY = bestPrice;
       product.japan.verifiedDate = today;
-      product.japan.source = 'rakuten.co.jp';
-      const diff = price - old;
+      product.japan.source = prices.length === 2
+        ? `rakuten:¥${rakutenPrice.toLocaleString()} / yahoo:¥${yahooPrice.toLocaleString()}`
+        : source;
+
+      const diff = bestPrice - old;
       const arrow = diff > 0 ? '↑' : diff < 0 ? '↓' : '=';
-      console.log(`  ✅ ¥${price.toLocaleString()} (이전: ¥${old.toLocaleString()} ${arrow})`);
+      console.log(`  ✅ 최저가: ¥${bestPrice.toLocaleString()} [${source}] (이전: ¥${old.toLocaleString()} ${arrow})`);
       updated++;
     } else {
-      console.log(`  ⚠️ 가격 조회 실패, 기존값 유지: ¥${product.japan.priceJPY.toLocaleString()}`);
+      console.log(`  ❌ 양쪽 모두 가격 조회 실패 → 기존값 제거`);
+      // 기존 데이터 유지하지 않음 - 단, priceJPY는 0으로 하면 비교 불가하므로
+      // 가격을 null로 표시하고 verifiedDate를 비움
+      product.japan.verifiedDate = '';
+      product.japan.source = 'failed';
     }
-
-    await sleep(DELAY_MS);
   }
 
+  await browser.close();
+
   data.meta.lastUpdated = today;
-  data.meta.japanSource = 'kakaku.com / rakuten.co.jp (最安値)';
+  data.meta.japanSource = 'rakuten.co.jp / shopping.yahoo.co.jp (最安値)';
 
   writeFileSync(DATA_PATH, JSON.stringify(data, null, 2) + '\n');
-  console.log(`\n✅ 완료! ${updated}/${data.products.length} 제품 가격 갱신됨.`);
+  console.log(`\n✅ 완료! ${updated}/${data.products.length} 제품 일본 가격 갱신됨.`);
   console.log(`📄 ${DATA_PATH} 저장됨.`);
 }
 
-main().catch(console.error);
+main().catch(err => {
+  console.error('❌ 스크립트 실행 실패:', err);
+  process.exit(1);
+});

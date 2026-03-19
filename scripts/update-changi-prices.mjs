@@ -236,8 +236,12 @@ async function main() {
       console.log(`  ✅ ${product.nameKR}: S$${matched.price} (이전: ${oldPrice ? 'S$'+oldPrice : '없음'} ${arrow})`);
       updated++;
     } else {
-      console.log(`  ⚠️ ${product.nameKR}: 매칭 실패, 기존값 유지`);
-      // 매칭 못 하면 available 상태는 변경하지 않음
+      // 매칭 실패 → 미판매 처리 (구 데이터 남기지 않음)
+      product.changi.priceSGD = null;
+      product.changi.available = false;
+      product.changi.verifiedDate = today;
+      product.changi.notes = '자동 스크래핑 미발견';
+      console.log(`  ❌ ${product.nameKR}: 매칭 실패 → 미판매 처리`);
     }
   }
 
