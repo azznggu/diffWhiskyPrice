@@ -29,14 +29,14 @@
 | **스크립트** | `scripts/update-changi-prices.mjs` |
 | **수집 흐름** | 브랜드별 페이지 접근 → DOM에서 제품명+S$ 가격 추출 → 정규식 매칭으로 제품 식별 → 매칭 실패 시 검색 폴백 → 미발견 시 미판매 처리 |
 
-### 🗾 일본 시중 최저가 (Rakuten + Yahoo Shopping)
+### 🗾 일본 시중 최저가 (Yahoo Shopping)
 
 | 항목 | 내용 |
 |------|------|
-| **소스** | search.rakuten.co.jp / shopping.yahoo.co.jp |
+| **소스** | shopping.yahoo.co.jp |
 | **방식** | Playwright 헤드리스 브라우저 |
 | **스크립트** | `scripts/update-japan-prices.mjs` |
-| **수집 흐름** | 일본어 검색어 + "700ml" 키워드로 검색 → 가격 오름차순 정렬 → 미니어처/샘플 필터링(¥2,500 이상만) → Rakuten/Yahoo 중 최저가 선택 |
+| **수집 흐름** | 일본어 검색어 + "700ml" 키워드로 검색 → 가격 오름차순 정렬 → 미니어처/샘플 필터링(¥2,500 이상만) → 최저가 선택 |
 
 ### 💱 환율
 
@@ -114,7 +114,7 @@ diffWhiskyPrice/
   "meta": {
     "lastUpdated": "2026-03-19",
     "changiSource": "iShopChangi.com (Traveller mode, auto-scraped)",
-    "japanSource": "rakuten.co.jp / shopping.yahoo.co.jp (最安値)"
+    "japanSource": "shopping.yahoo.co.jp (最安値)"
   },
   "products": [
     {
@@ -134,7 +134,7 @@ diffWhiskyPrice/
         "priceJPY": 8397,
         "volumeML": 700,
         "verifiedDate": "2026-03-19",
-        "source": "rakuten:¥8,397 / yahoo:¥9,200"
+        "source": "yahoo:¥8,397"
       }
     }
   ]
