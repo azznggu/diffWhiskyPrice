@@ -297,8 +297,9 @@ async function loadData() {
 
 function calc(p) {
   if (!rate || !p.changi.available || !p.changi.priceSGD) return null;
+  const jJpy = p.japan.totalJPY || p.japan.priceJPY;
+  if (!jJpy) return null; // 일본 가격 없음
   const cJpy = p.changi.priceSGD * rate;
-  const jJpy = p.japan.totalJPY || p.japan.priceJPY; // 배송료 포함 총액 우선
   const cVol = p.changi.volumeML;
   const jVol = p.japan.volumeML;
 
@@ -371,9 +372,13 @@ function card(p) {
   const ce = { islay:'🌊', speyside:'🏔', island:'🏝', highland:'⛰️', irish:'🇮🇪' }[p.category]||'';
   const volDiff = p.changi.volumeML !== p.japan.volumeML;
 
+  const hasJapanPrice = p.japan.priceJPY != null;
+
   let badgeHtml = '';
   if (!p.changi.available) {
     badgeHtml = '<div class="badge na">창이 미판매</div>';
+  } else if (!hasJapanPrice) {
+    badgeHtml = '<div class="badge na">일본 미판매</div>';
   } else if (ok) {
     badgeHtml = `<div class="badge ${win?'g':'r'}">
       ${win ? '¥'+fmt(Math.round(d.diff))+' 절약' : '¥'+fmt(Math.round(-d.diff))+' 비쌈'}
@@ -383,8 +388,8 @@ function card(p) {
 
   const changiJpyStr = ok ? '≈ ¥' + fmt(Math.round(d.changiJPY)) : '';
   const changiPerMl = ok ? '¥' + fmt(d.changiJPY / p.changi.volumeML, 1) + '/ml' : '';
-  const japanTotal = p.japan.totalJPY || p.japan.priceJPY;
-  const japanPerMl = '¥' + fmt(japanTotal / p.japan.volumeML, 1) + '/ml';
+  const japanTotal = p.japan.totalJPY || p.japan.priceJPY || 0;
+  const japanPerMl = hasJapanPrice ? '¥' + fmt(japanTotal / p.japan.volumeML, 1) + '/ml' : '-';
 
   const diffHtml = ok
     ? `<div class="p-val ${win?'pos':'neg'}">${win?'▼':'▲'} ¥${fmt(Math.round(Math.abs(d.diff)))}</div>
@@ -420,10 +425,12 @@ function card(p) {
       </div>
       <div class="p-cell">
         <div class="p-label">🗾 일본 최저가${p.japan.shippingJPY ? ' (送料込)' : ''}</div>
-        <div class="p-val japan">¥${fmt(p.japan.totalJPY || p.japan.priceJPY)}</div>
-        <div class="p-sub">${p.japan.shippingJPY ? `本体¥${fmt(p.japan.priceJPY)} + 送料¥${fmt(p.japan.shippingJPY)}` : (p.japan.sourceUrl ? '送料無料' : '&nbsp;')}</div>
-        ${p.japan.sourceUrl ? `<div class="p-sub"><a href="${p.japan.sourceUrl}" target="_blank" rel="noopener" style="color:var(--blue);text-decoration:none;font-size:9px;">출처 보기 ↗</a></div>` : ''}
-        ${perMl ? `<div class="p-sub per-ml">${japanPerMl}</div>` : ''}
+        ${hasJapanPrice
+          ? `<div class="p-val japan">¥${fmt(japanTotal)}</div>
+             <div class="p-sub">${p.japan.shippingJPY ? `本体¥${fmt(p.japan.priceJPY)} + 送料¥${fmt(p.japan.shippingJPY)}` : (p.japan.sourceUrl ? '送料無料' : '&nbsp;')}</div>
+             ${p.japan.sourceUrl ? `<div class="p-sub"><a href="${p.japan.sourceUrl}" target="_blank" rel="noopener" style="color:var(--blue);text-decoration:none;font-size:9px;">출처 보기 ↗</a></div>` : ''}
+             ${perMl ? `<div class="p-sub per-ml">${japanPerMl}</div>` : ''}`
+          : '<div class="p-val na">미판매</div>'}
       </div>
       <div class="p-cell">
         <div class="p-label">차이 (엔화)</div>

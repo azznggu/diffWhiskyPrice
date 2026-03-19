@@ -35,7 +35,10 @@ async function searchYahoo(page, searchTerm) {
     await page.waitForSelector('[class*="Product"], [class*="item"], [class*="mdSearchResult"]', { timeout: 10000 }).catch(() => {});
     await sleep(2000);
 
-    const results = await page.evaluate((min) => {
+    // 검색어에서 브랜드명을 추출 (첫 번째 토큰 = 브랜드명)
+    const brandKeyword = searchTerm.split(/\s+/)[0]; // e.g. "ラフロイグ", "マッカラン"
+
+    const results = await page.evaluate((min, brand) => {
       const items_found = [];
 
       // Yahoo Shopping 검색 결과 아이템 단위로 처리
@@ -48,14 +51,17 @@ async function searchYahoo(page, searchTerm) {
         if (/(?:50|100|200)\s*ml/i.test(text) && !/700\s*ml/i.test(text)) continue;
         if (/ミニチュア|ミニボトル|サンプル|お試し/i.test(text)) continue;
 
+        // 상품명 추출
+        const titleEl = item.querySelector('a[class*="detailLink"]');
+        const title = titleEl ? titleEl.textContent.trim() : '';
+
+        // ★ 브랜드명이 상품명에 포함되어 있는지 검증 (오매칭 방지)
+        if (title && brand && !title.includes(brand)) continue;
+
         const m = text.match(/([\d,]+)\s*円/) || text.match(/¥\s*([\d,]+)/);
         if (m) {
           const price = parseInt(m[1].replace(/,/g, ''));
           if (price >= min) {
-            // 상품명 추출
-            const titleEl = item.querySelector('a[class*="detailLink"]');
-            const title = titleEl ? titleEl.textContent.trim() : '';
-
             // 상품 상세 링크 추출
             const link = item.querySelector('a[class*="detailLink"]')
               || item.querySelector('a[class*="ImageLink"]')
@@ -93,7 +99,7 @@ async function searchYahoo(page, searchTerm) {
       }
 
       return items_found;
-    }, MIN_PRICE);
+    }, MIN_PRICE, brandKeyword);
 
     if (results.length > 0) {
       // 배송료 포함 총액 기준 최저가 아이템 찾기
@@ -161,13 +167,14 @@ async function main() {
       console.log(`  ✅ 최저가: ¥${yahooResult.total.toLocaleString()} (본체¥${yahooResult.price.toLocaleString()} + 送料¥${yahooResult.shipping.toLocaleString()}) (이전: ${old ? '¥'+old.toLocaleString() : '없음'} ${arrow})`);
       updated++;
     } else {
-      console.log(`  ❌ 가격 조회 실패`);
-      product.japan.verifiedDate = '';
-      product.japan.source = 'failed';
-      product.japan.sourceUrl = null;
+      console.log(`  ❌ 가격 조회 실패 → 미판매 처리`);
+      product.japan.priceJPY = null;
       product.japan.shippingJPY = 0;
-      product.japan.totalJPY = 0;
+      product.japan.totalJPY = null;
       product.japan.productTitle = '';
+      product.japan.verifiedDate = today;
+      product.japan.source = 'yahoo:미발견';
+      product.japan.sourceUrl = null;
     }
   }
 
