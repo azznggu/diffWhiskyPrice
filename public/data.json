@@ -2,71 +2,47 @@
   "meta": {
     "lastUpdated": "2026-03-19",
     "changiSource": "iShopChangi.com (Traveller mode, auto-scraped)",
-    "japanSource": "shopping.yahoo.co.jp (最安値)",
-    "notes": "싱글몰트 위스키 중심. 창이 가격은 여행자(면세) 모드 기준. 일본 가격은 kakaku.com 최저가."
+    "japanSource": "shopping.yahoo.co.jp (最安値)"
   },
   "products": [
     {
-      "id": "macallan-12dc",
-      "name": "The Macallan 12 Year Double Cask",
-      "nameKR": "맥캘란 12년 더블 캐스크",
+      "id": "macallan-12cc",
+      "name": "The Macallan Colour Collection 12 Year",
+      "nameKR": "맥캘란 컬러 컬렉션 12년",
       "brand": "Macallan",
       "category": "speyside",
-      "searchTermJP": "マッカラン 12年 ダブルカスク",
+      "searchTermJP": "マッカラン 12年",
       "changi": {
         "priceSGD": null,
         "volumeML": 700,
         "available": false,
-        "notes": "자동 스크래핑 미발견",
         "verifiedDate": "2026-03-19"
       },
       "japan": {
-        "priceJPY": 7999,
+        "priceJPY": null,
         "volumeML": 700,
-        "verifiedDate": "2026-03-19",
-        "source": "yahoo:¥7,999"
+        "verifiedDate": "",
+        "source": ""
       }
     },
     {
-      "id": "macallan-12so",
-      "name": "The Macallan 12 Year Sherry Oak",
-      "nameKR": "맥캘란 12년 셰리 오크",
+      "id": "macallan-18cc",
+      "name": "The Macallan Colour Collection 18 Year",
+      "nameKR": "맥캘란 컬러 컬렉션 18년",
       "brand": "Macallan",
       "category": "speyside",
-      "searchTermJP": "マッカラン 12年 シェリーオーク",
+      "searchTermJP": "マッカラン 18年",
       "changi": {
         "priceSGD": null,
         "volumeML": 700,
         "available": false,
-        "notes": "자동 스크래핑 미발견",
         "verifiedDate": "2026-03-19"
       },
       "japan": {
-        "priceJPY": 7999,
+        "priceJPY": null,
         "volumeML": 700,
-        "verifiedDate": "2026-03-19",
-        "source": "yahoo:¥7,999"
-      }
-    },
-    {
-      "id": "macallan-18dc",
-      "name": "The Macallan 18 Year Double Cask",
-      "nameKR": "맥캘란 18년 더블 캐스크",
-      "brand": "Macallan",
-      "category": "speyside",
-      "searchTermJP": "マッカラン 18年 ダブルカスク",
-      "changi": {
-        "priceSGD": null,
-        "volumeML": 700,
-        "available": false,
-        "notes": "자동 스크래핑 미발견",
-        "verifiedDate": "2026-03-19"
-      },
-      "japan": {
-        "priceJPY": 27280,
-        "volumeML": 700,
-        "verifiedDate": "2026-03-19",
-        "source": "yahoo:¥27,280"
+        "verifiedDate": "",
+        "source": ""
       }
     },
     {
@@ -80,7 +56,6 @@
         "priceSGD": null,
         "volumeML": 700,
         "available": false,
-        "notes": "자동 스크래핑 미발견",
         "verifiedDate": "2026-03-19"
       },
       "japan": {
@@ -91,24 +66,23 @@
       }
     },
     {
-      "id": "lagavulin-8",
-      "name": "Lagavulin 8 Year",
-      "nameKR": "라가불린 8년",
+      "id": "lagavulin-10",
+      "name": "Lagavulin 10 Year",
+      "nameKR": "라가불린 10년",
       "brand": "Lagavulin",
       "category": "islay",
-      "searchTermJP": "ラガヴーリン 8年",
+      "searchTermJP": "ラガヴーリン 10年",
       "changi": {
         "priceSGD": null,
         "volumeML": 700,
         "available": false,
-        "notes": "자동 스크래핑 미발견",
         "verifiedDate": "2026-03-19"
       },
       "japan": {
-        "priceJPY": 5921,
+        "priceJPY": null,
         "volumeML": 700,
-        "verifiedDate": "2026-03-19",
-        "source": "yahoo:¥5,921"
+        "verifiedDate": "",
+        "source": ""
       }
     },
     {
@@ -119,10 +93,9 @@
       "category": "islay",
       "searchTermJP": "ラフロイグ 10年",
       "changi": {
-        "priceSGD": 145.6,
+        "priceSGD": null,
         "volumeML": 1000,
-        "available": true,
-        "notes": "1000ml (면세점 한정)",
+        "available": false,
         "verifiedDate": "2026-03-19"
       },
       "japan": {
@@ -133,24 +106,23 @@
       }
     },
     {
-      "id": "laphroaig-qc",
-      "name": "Laphroaig Quarter Cask",
-      "nameKR": "라프로익 쿼터 캐스크",
+      "id": "laphroaig-12",
+      "name": "Laphroaig 12 Year",
+      "nameKR": "라프로익 12년",
       "brand": "Laphroaig",
       "category": "islay",
-      "searchTermJP": "ラフロイグ クォーターカスク",
+      "searchTermJP": "ラフロイグ 12年",
       "changi": {
         "priceSGD": null,
         "volumeML": 700,
         "available": false,
-        "notes": "자동 스크래핑 미발견",
         "verifiedDate": "2026-03-19"
       },
       "japan": {
-        "priceJPY": 5368,
+        "priceJPY": null,
         "volumeML": 700,
-        "verifiedDate": "2026-03-19",
-        "source": "yahoo:¥5,368"
+        "verifiedDate": "",
+        "source": ""
       }
     },
     {
@@ -161,10 +133,9 @@
       "category": "islay",
       "searchTermJP": "アードベッグ 10年",
       "changi": {
-        "priceSGD": 85,
+        "priceSGD": null,
         "volumeML": 1000,
-        "available": true,
-        "notes": "1000ml (면세점 한정)",
+        "available": false,
         "verifiedDate": "2026-03-19"
       },
       "japan": {
@@ -175,27 +146,6 @@
       }
     },
     {
-      "id": "ardbeg-uigeadail",
-      "name": "Ardbeg Uigeadail",
-      "nameKR": "아드벡 우거달",
-      "brand": "Ardbeg",
-      "category": "islay",
-      "searchTermJP": "アードベッグ ウーガダール",
-      "changi": {
-        "priceSGD": null,
-        "volumeML": 700,
-        "available": false,
-        "notes": "자동 스크래핑 미발견",
-        "verifiedDate": "2026-03-19"
-      },
-      "japan": {
-        "priceJPY": 8480,
-        "volumeML": 700,
-        "verifiedDate": "2026-03-19",
-        "source": "yahoo:¥8,480"
-      }
-    },
-    {
       "id": "redbreast-12",
       "name": "Redbreast 12 Year",
       "nameKR": "레드브레스트 12년",
@@ -203,10 +153,9 @@
       "category": "irish",
       "searchTermJP": "レッドブレスト 12年",
       "changi": {
-        "priceSGD": 69.7,
+        "priceSGD": null,
         "volumeML": 700,
-        "available": true,
-        "notes": "",
+        "available": false,
         "verifiedDate": "2026-03-19"
       },
       "japan": {
@@ -224,10 +173,9 @@
       "category": "speyside",
       "searchTermJP": "オルトモア 12年",
       "changi": {
-        "priceSGD": 60,
+        "priceSGD": null,
         "volumeML": 500,
-        "available": true,
-        "notes": "500ml EXCLUSIVE (면세점 한정)",
+        "available": false,
         "verifiedDate": "2026-03-19"
       },
       "japan": {
@@ -238,87 +186,63 @@
       }
     },
     {
-      "id": "bowmore-12",
-      "name": "Bowmore 12 Year",
-      "nameKR": "보모어 12년",
+      "id": "bowmore-11",
+      "name": "Bowmore 11 Year Sherry Cask Finish",
+      "nameKR": "보모어 11년 셰리 캐스크",
       "brand": "Bowmore",
       "category": "islay",
-      "searchTermJP": "ボウモア 12年",
+      "searchTermJP": "ボウモア 11年",
       "changi": {
         "priceSGD": null,
         "volumeML": 700,
         "available": false,
-        "notes": "자동 스크래핑 미발견",
         "verifiedDate": "2026-03-19"
       },
       "japan": {
-        "priceJPY": 4400,
+        "priceJPY": null,
         "volumeML": 700,
-        "verifiedDate": "2026-03-19",
-        "source": "yahoo:¥4,400"
+        "verifiedDate": "",
+        "source": ""
       }
     },
     {
-      "id": "glenfiddich-12",
-      "name": "Glenfiddich 12 Year",
-      "nameKR": "글렌피딕 12년",
+      "id": "glenfiddich-perpetual",
+      "name": "Glenfiddich Perpetual Collection Vat 1",
+      "nameKR": "글렌피딕 퍼페추얼 Vat 1",
       "brand": "Glenfiddich",
       "category": "speyside",
-      "searchTermJP": "グレンフィディック 12年",
-      "changi": {
-        "priceSGD": 312,
-        "volumeML": 700,
-        "available": true,
-        "notes": "",
-        "verifiedDate": "2026-03-19"
-      },
-      "japan": {
-        "priceJPY": 4080,
-        "volumeML": 700,
-        "verifiedDate": "2026-03-19",
-        "source": "yahoo:¥4,080"
-      }
-    },
-    {
-      "id": "glenlivet-12",
-      "name": "The Glenlivet 12 Year",
-      "nameKR": "글렌리벳 12년",
-      "brand": "Glenlivet",
-      "category": "speyside",
-      "searchTermJP": "グレンリベット 12年",
+      "searchTermJP": "グレンフィディック",
       "changi": {
         "priceSGD": null,
-        "volumeML": 700,
+        "volumeML": 1000,
         "available": false,
-        "notes": "자동 스크래핑 미발견",
         "verifiedDate": "2026-03-19"
       },
       "japan": {
-        "priceJPY": 3920,
+        "priceJPY": null,
         "volumeML": 700,
-        "verifiedDate": "2026-03-19",
-        "source": "yahoo:¥3,920"
+        "verifiedDate": "",
+        "source": ""
       }
     },
     {
-      "id": "highland-park-12",
-      "name": "Highland Park 12 Year Viking Honour",
-      "nameKR": "하이랜드 파크 12년",
+      "id": "highland-park-14",
+      "name": "Highland Park 14 Year Land of Orkney",
+      "nameKR": "하이랜드 파크 14년",
       "brand": "Highland Park",
       "category": "island",
-      "searchTermJP": "ハイランドパーク 12年",
+      "searchTermJP": "ハイランドパーク 14年",
       "changi": {
         "priceSGD": null,
         "volumeML": 700,
         "available": false,
-        "notes": "자동 스크래핑 미발견",
         "verifiedDate": "2026-03-19"
       },
       "japan": {
-        "priceJPY": 4800,
+        "priceJPY": null,
         "volumeML": 700,
-        "verifiedDate": "2026-03-19",
-        "source": "yahoo:¥4,800"
+        "verifiedDate": "",
+        "source": ""
       }
     },
     {
@@ -330,9 +254,8 @@
       "searchTermJP": "タリスカー 10年",
       "changi": {
         "priceSGD": null,
-        "volumeML": 700,
+        "volumeML": 1000,
         "available": false,
-        "notes": "자동 스크래핑 미발견",
         "verifiedDate": "2026-03-19"
       },
       "japan": {
@@ -350,10 +273,9 @@
       "category": "highland",
       "searchTermJP": "オーバン 14年",
       "changi": {
-        "priceSGD": 151,
+        "priceSGD": null,
         "volumeML": 700,
-        "available": true,
-        "notes": "",
+        "available": false,
         "verifiedDate": "2026-03-19"
       },
       "japan": {
