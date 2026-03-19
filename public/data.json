@@ -11,7 +11,7 @@
       "nameKR": "맥캘란 컬러 컬렉션 12년",
       "brand": "Macallan",
       "category": "speyside",
-      "searchTermJP": "マッカラン 12年",
+      "searchTermJP": "マッカラン カラーコレクション 12年",
       "changi": {
         "priceSGD": 102.2,
         "volumeML": 700,
@@ -32,7 +32,7 @@
       "nameKR": "맥캘란 컬러 컬렉션 18년",
       "brand": "Macallan",
       "category": "speyside",
-      "searchTermJP": "マッカラン 18年",
+      "searchTermJP": "マッカラン カラーコレクション 18年",
       "changi": {
         "priceSGD": 446.9,
         "volumeML": 700,
@@ -200,7 +200,7 @@
       "nameKR": "보모어 11년 셰리 캐스크",
       "brand": "Bowmore",
       "category": "islay",
-      "searchTermJP": "ボウモア 11年",
+      "searchTermJP": "ボウモア 11年 シェリーカスク",
       "changi": {
         "priceSGD": 69,
         "volumeML": 700,
@@ -221,7 +221,7 @@
       "nameKR": "글렌피딕 퍼페추얼 Vat 1",
       "brand": "Glenfiddich",
       "category": "speyside",
-      "searchTermJP": "グレンフィディック",
+      "searchTermJP": "グレンフィディック パーペチュアル VAT 01",
       "changi": {
         "priceSGD": 140.1,
         "volumeML": 1000,

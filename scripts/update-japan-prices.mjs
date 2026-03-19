@@ -2,6 +2,7 @@
  * 일본 시장 위스키 최저가 자동 갱신 스크립트
  * Playwright로 Yahoo Shopping 검색 결과를 스크래핑하여 최저가를 수집합니다.
  * 검색어에 "700ml" 포함 + 가격 하한 ¥2,500으로 미니어처/샘플 제외
+ * 상품명, 배송료, 출처 URL도 함께 수집합니다.
  *
  * Usage: node scripts/update-japan-prices.mjs
  * 사전 요구: npx playwright install chromium
@@ -22,7 +23,7 @@ const MIN_PRICE = 2500;
 function sleep(ms) { return new Promise(r => setTimeout(r, ms)); }
 
 /**
- * Yahoo Shopping 검색 → 가격 추출 (Playwright)
+ * Yahoo Shopping 검색 → 가격 + 상품명 + 배송료 + URL 추출 (Playwright)
  */
 async function searchYahoo(page, searchTerm) {
   const fullTerm = `${searchTerm} 700ml`;
@@ -49,28 +50,44 @@ async function searchYahoo(page, searchTerm) {
 
         const m = text.match(/([\d,]+)\s*円/) || text.match(/¥\s*([\d,]+)/);
         if (m) {
-          const p = parseInt(m[1].replace(/,/g, ''));
-          if (p >= min) {
-            // 상품 상세 링크 추출 (detailLink > 이미지링크 > 기타)
+          const price = parseInt(m[1].replace(/,/g, ''));
+          if (price >= min) {
+            // 상품명 추출
+            const titleEl = item.querySelector('a[class*="detailLink"]');
+            const title = titleEl ? titleEl.textContent.trim() : '';
+
+            // 상품 상세 링크 추출
             const link = item.querySelector('a[class*="detailLink"]')
               || item.querySelector('a[class*="ImageLink"]')
               || item.querySelector('a[href*="store.shopping.yahoo"]')
               || item.querySelector('a[href]');
             const href = link ? link.href : null;
-            items_found.push({ price: p, url: href });
+
+            // 배송료 추출
+            const postageEl = item.querySelector('[class*="ItemPostage"]');
+            const postageText = postageEl ? postageEl.textContent.trim() : '';
+            let shipping = 0;
+            if (/送料無料/.test(postageText)) {
+              shipping = 0;
+            } else {
+              const sm = postageText.match(/送料([\d,]+)円/);
+              if (sm) shipping = parseInt(sm[1].replace(/,/g, ''));
+            }
+
+            items_found.push({ price, shipping, total: price + shipping, title, url: href });
           }
         }
       }
 
-      // 폴백: 가격 요소에서 직접 추출 (링크 없음)
+      // 폴백: 가격 요소에서 직접 추출 (상품명/배송료 없음)
       if (items_found.length === 0) {
         const priceEls = document.querySelectorAll('[class*="ItemPrice"], [class*="Price"], [class*="price"]');
         for (const el of priceEls) {
           const text = el.textContent || '';
           const m = text.match(/([\d,]+)\s*円/) || text.match(/¥\s*([\d,]+)/);
           if (m) {
-            const p = parseInt(m[1].replace(/,/g, ''));
-            if (p >= min) items_found.push({ price: p, url: null });
+            const price = parseInt(m[1].replace(/,/g, ''));
+            if (price >= min) items_found.push({ price, shipping: 0, total: price, title: '', url: null });
           }
         }
       }
@@ -79,11 +96,12 @@ async function searchYahoo(page, searchTerm) {
     }, MIN_PRICE);
 
     if (results.length > 0) {
-      // 최저가 아이템 찾기
-      const best = results.reduce((a, b) => a.price <= b.price ? a : b);
-      console.log(`      → ¥${best.price.toLocaleString()} (${results.length}건 중 최저가)`);
+      // 배송료 포함 총액 기준 최저가 아이템 찾기
+      const best = results.reduce((a, b) => a.total <= b.total ? a : b);
+      console.log(`      → ¥${best.price.toLocaleString()} + 送料¥${best.shipping.toLocaleString()} = 合計¥${best.total.toLocaleString()} (${results.length}건 중 최저)`);
+      if (best.title) console.log(`      → 상품: ${best.title.substring(0, 60)}`);
       if (best.url) console.log(`      → ${best.url}`);
-      return { price: best.price, url: best.url || null };
+      return best;
     }
     console.log(`      → 가격 미발견`);
     return null;
@@ -131,19 +149,25 @@ async function main() {
     if (yahooResult !== null) {
       const old = product.japan.priceJPY;
       product.japan.priceJPY = yahooResult.price;
+      product.japan.shippingJPY = yahooResult.shipping;
+      product.japan.totalJPY = yahooResult.total;
+      product.japan.productTitle = yahooResult.title || '';
       product.japan.verifiedDate = today;
       product.japan.source = `yahoo:¥${yahooResult.price.toLocaleString()}`;
       product.japan.sourceUrl = yahooResult.url || null;
 
       const diff = old ? yahooResult.price - old : 0;
       const arrow = old ? (diff > 0 ? '↑' : diff < 0 ? '↓' : '=') : '🆕';
-      console.log(`  ✅ 최저가: ¥${yahooResult.price.toLocaleString()} (이전: ${old ? '¥'+old.toLocaleString() : '없음'} ${arrow})`);
+      console.log(`  ✅ 최저가: ¥${yahooResult.total.toLocaleString()} (본체¥${yahooResult.price.toLocaleString()} + 送料¥${yahooResult.shipping.toLocaleString()}) (이전: ${old ? '¥'+old.toLocaleString() : '없음'} ${arrow})`);
       updated++;
     } else {
       console.log(`  ❌ 가격 조회 실패`);
       product.japan.verifiedDate = '';
       product.japan.source = 'failed';
       product.japan.sourceUrl = null;
+      product.japan.shippingJPY = 0;
+      product.japan.totalJPY = 0;
+      product.japan.productTitle = '';
     }
   }
 

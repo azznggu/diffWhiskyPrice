@@ -298,7 +298,7 @@ async function loadData() {
 function calc(p) {
   if (!rate || !p.changi.available || !p.changi.priceSGD) return null;
   const cJpy = p.changi.priceSGD * rate;
-  const jJpy = p.japan.priceJPY;
+  const jJpy = p.japan.totalJPY || p.japan.priceJPY; // 배송료 포함 총액 우선
   const cVol = p.changi.volumeML;
   const jVol = p.japan.volumeML;
 
@@ -383,7 +383,8 @@ function card(p) {
 
   const changiJpyStr = ok ? '≈ ¥' + fmt(Math.round(d.changiJPY)) : '';
   const changiPerMl = ok ? '¥' + fmt(d.changiJPY / p.changi.volumeML, 1) + '/ml' : '';
-  const japanPerMl = '¥' + fmt(p.japan.priceJPY / p.japan.volumeML, 1) + '/ml';
+  const japanTotal = p.japan.totalJPY || p.japan.priceJPY;
+  const japanPerMl = '¥' + fmt(japanTotal / p.japan.volumeML, 1) + '/ml';
 
   const diffHtml = ok
     ? `<div class="p-val ${win?'pos':'neg'}">${win?'▼':'▲'} ¥${fmt(Math.round(Math.abs(d.diff)))}</div>
@@ -393,7 +394,8 @@ function card(p) {
   const notes = [];
   if (p.changi.notes) notes.push('🛫 ' + p.changi.notes);
   if (volDiff && p.changi.available) notes.push('⚠️ 용량 다름 → ml당 비교 추천');
-  const noteHtml = notes.length ? `<div class="c-note">${notes.join(' · ')}</div>` : '';
+  if (p.japan.productTitle) notes.push('🗾 ' + p.japan.productTitle);
+  const noteHtml = notes.length ? `<div class="c-note">${notes.join('<br>')}</div>` : '';
 
   return `<div class="card">
     <div class="c-top">
@@ -417,9 +419,10 @@ function card(p) {
           : '<div class="p-val na">미판매</div>'}
       </div>
       <div class="p-cell">
-        <div class="p-label">🗾 일본 최저가</div>
-        <div class="p-val japan">¥${fmt(p.japan.priceJPY)}</div>
-        <div class="p-sub">${p.japan.sourceUrl ? `<a href="${p.japan.sourceUrl}" target="_blank" rel="noopener" style="color:var(--blue);text-decoration:none;font-size:9px;">출처 보기 ↗</a>` : '&nbsp;'}</div>
+        <div class="p-label">🗾 일본 최저가${p.japan.shippingJPY ? ' (送料込)' : ''}</div>
+        <div class="p-val japan">¥${fmt(p.japan.totalJPY || p.japan.priceJPY)}</div>
+        <div class="p-sub">${p.japan.shippingJPY ? `本体¥${fmt(p.japan.priceJPY)} + 送料¥${fmt(p.japan.shippingJPY)}` : (p.japan.sourceUrl ? '送料無料' : '&nbsp;')}</div>
+        ${p.japan.sourceUrl ? `<div class="p-sub"><a href="${p.japan.sourceUrl}" target="_blank" rel="noopener" style="color:var(--blue);text-decoration:none;font-size:9px;">출처 보기 ↗</a></div>` : ''}
         ${perMl ? `<div class="p-sub per-ml">${japanPerMl}</div>` : ''}
       </div>
       <div class="p-cell">
