@@ -16,9 +16,8 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 const DATA_PATH = resolve(__dirname, '../data/whiskies.json');
 
 const DELAY_MS = 3000;
-// 700ml 위스키 병 가격으로 합리적인 범위 (미니어처/샘플 제외)
+// 미니어처/샘플 제외를 위한 최소 가격
 const MIN_PRICE = 2500;
-const MAX_PRICE = 300000;
 
 function sleep(ms) { return new Promise(r => setTimeout(r, ms)); }
 
@@ -36,7 +35,7 @@ async function searchRakuten(page, searchTerm) {
     await page.waitForSelector('.searchresultitem, [class*="dui-card"], [class*="product"]', { timeout: 10000 }).catch(() => {});
     await sleep(2000);
 
-    const prices = await page.evaluate((min, max) => {
+    const prices = await page.evaluate((min) => {
       const results = [];
 
       // 검색 결과 아이템에서 가격 추출
@@ -52,7 +51,7 @@ async function searchRakuten(page, searchTerm) {
           for (const pm of priceMatches) {
             const numStr = pm.replace(/[¥￥円\s]/g, '').replace(/,/g, '');
             const p = parseInt(numStr);
-            if (p >= min && p <= max) results.push(p);
+            if (p >= min) results.push(p);
           }
         }
       }
@@ -61,12 +60,12 @@ async function searchRakuten(page, searchTerm) {
       if (results.length === 0) {
         document.querySelectorAll('[data-price]').forEach(el => {
           const p = parseInt(el.getAttribute('data-price'));
-          if (p >= min && p <= max) results.push(p);
+          if (p >= min) results.push(p);
         });
       }
 
       return results;
-    }, MIN_PRICE, MAX_PRICE);
+    }, MIN_PRICE);
 
     if (prices.length > 0) {
       const min = Math.min(...prices);
@@ -94,7 +93,7 @@ async function searchYahoo(page, searchTerm) {
     await page.waitForSelector('[class*="Product"], [class*="item"], [class*="mdSearchResult"]', { timeout: 10000 }).catch(() => {});
     await sleep(2000);
 
-    const prices = await page.evaluate((min, max) => {
+    const prices = await page.evaluate((min) => {
       const results = [];
 
       // 검색 결과 아이템 단위로 처리
@@ -108,7 +107,7 @@ async function searchYahoo(page, searchTerm) {
         const m = text.match(/([\d,]+)\s*円/) || text.match(/¥\s*([\d,]+)/);
         if (m) {
           const p = parseInt(m[1].replace(/,/g, ''));
-          if (p >= min && p <= max) results.push(p);
+          if (p >= min) results.push(p);
         }
       }
 
@@ -120,13 +119,13 @@ async function searchYahoo(page, searchTerm) {
           const m = text.match(/([\d,]+)\s*円/) || text.match(/¥\s*([\d,]+)/);
           if (m) {
             const p = parseInt(m[1].replace(/,/g, ''));
-            if (p >= min && p <= max) results.push(p);
+            if (p >= min) results.push(p);
           }
         }
       }
 
       return results;
-    }, MIN_PRICE, MAX_PRICE);
+    }, MIN_PRICE);
 
     if (prices.length > 0) {
       const min = Math.min(...prices);
@@ -143,7 +142,7 @@ async function searchYahoo(page, searchTerm) {
 
 async function main() {
   console.log('🚀 일본 시장 위스키 최저가 자동 갱신 시작 (Playwright)...\n');
-  console.log(`   가격 범위: ¥${MIN_PRICE.toLocaleString()} ~ ¥${MAX_PRICE.toLocaleString()}\n`);
+  console.log(`   최소 가격: ¥${MIN_PRICE.toLocaleString()} (미니어처/샘플 제외)\n`);
 
   const data = JSON.parse(readFileSync(DATA_PATH, 'utf-8'));
   const today = new Date().toISOString().split('T')[0];
