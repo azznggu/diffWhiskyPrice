@@ -1,8 +1,8 @@
 {
   "meta": {
     "lastUpdated": "2026-03-19",
-    "changiSource": "iShopChangi.com (Traveller mode)",
-    "japanSource": "kakaku.com (最安値)",
+    "changiSource": "iShopChangi.com (Traveller mode, auto-scraped)",
+    "japanSource": "kakaku.com / rakuten.co.jp (最安値)",
     "notes": "싱글몰트 위스키 중심. 창이 가격은 여행자(면세) 모드 기준. 일본 가격은 kakaku.com 최저가."
   },
   "products": [
@@ -13,8 +13,18 @@
       "brand": "Macallan",
       "category": "speyside",
       "searchTermJP": "マッカラン 12年 ダブルカスク",
-      "changi": { "priceSGD": 102.20, "volumeML": 700, "available": true, "notes": "Colour Collection 12yr", "verifiedDate": "2026-03" },
-      "japan": { "priceJPY": 8397, "volumeML": 700, "verifiedDate": "2026-03" }
+      "changi": {
+        "priceSGD": 102.2,
+        "volumeML": 700,
+        "available": true,
+        "notes": "Colour Collection 12yr",
+        "verifiedDate": "2026-03"
+      },
+      "japan": {
+        "priceJPY": 8397,
+        "volumeML": 700,
+        "verifiedDate": "2026-03"
+      }
     },
     {
       "id": "macallan-12so",
@@ -23,8 +33,18 @@
       "brand": "Macallan",
       "category": "speyside",
       "searchTermJP": "マッカラン 12年 シェリーオーク",
-      "changi": { "priceSGD": null, "volumeML": 700, "available": false, "notes": "Traveller모드 미판매 (Non-Traveller S$160)", "verifiedDate": "2026-03" },
-      "japan": { "priceJPY": 11297, "volumeML": 700, "verifiedDate": "2026-03" }
+      "changi": {
+        "priceSGD": null,
+        "volumeML": 700,
+        "available": false,
+        "notes": "Traveller모드 미판매 (Non-Traveller S$160)",
+        "verifiedDate": "2026-03"
+      },
+      "japan": {
+        "priceJPY": 11297,
+        "volumeML": 700,
+        "verifiedDate": "2026-03"
+      }
     },
     {
       "id": "macallan-18dc",
@@ -33,8 +53,18 @@
       "brand": "Macallan",
       "category": "speyside",
       "searchTermJP": "マッカラン 18年 ダブルカスク",
-      "changi": { "priceSGD": null, "volumeML": 700, "available": false, "notes": "Traveller모드 미판매 (Non-Traveller S$480)", "verifiedDate": "2026-03" },
-      "japan": { "priceJPY": 41129, "volumeML": 700, "verifiedDate": "2026-03" }
+      "changi": {
+        "priceSGD": null,
+        "volumeML": 700,
+        "available": false,
+        "notes": "Traveller모드 미판매 (Non-Traveller S$480)",
+        "verifiedDate": "2026-03"
+      },
+      "japan": {
+        "priceJPY": 41129,
+        "volumeML": 700,
+        "verifiedDate": "2026-03"
+      }
     },
     {
       "id": "lagavulin-16",
@@ -43,8 +73,18 @@
       "brand": "Lagavulin",
       "category": "islay",
       "searchTermJP": "ラガヴーリン 16年",
-      "changi": { "priceSGD": 129.70, "volumeML": 700, "available": true, "notes": "", "verifiedDate": "2026-03" },
-      "japan": { "priceJPY": 9790, "volumeML": 700, "verifiedDate": "2026-03" }
+      "changi": {
+        "priceSGD": 129.7,
+        "volumeML": 700,
+        "available": true,
+        "notes": "",
+        "verifiedDate": "2026-03"
+      },
+      "japan": {
+        "priceJPY": 9790,
+        "volumeML": 700,
+        "verifiedDate": "2026-03"
+      }
     },
     {
       "id": "lagavulin-8",
@@ -53,8 +93,18 @@
       "brand": "Lagavulin",
       "category": "islay",
       "searchTermJP": "ラガヴーリン 8年",
-      "changi": { "priceSGD": 138.00, "volumeML": 700, "available": true, "notes": "", "verifiedDate": "2026-03" },
-      "japan": { "priceJPY": 6050, "volumeML": 700, "verifiedDate": "2026-03" }
+      "changi": {
+        "priceSGD": 138,
+        "volumeML": 700,
+        "available": true,
+        "notes": "",
+        "verifiedDate": "2026-03"
+      },
+      "japan": {
+        "priceJPY": 6050,
+        "volumeML": 700,
+        "verifiedDate": "2026-03"
+      }
     },
     {
       "id": "laphroaig-10",
@@ -63,8 +113,18 @@
       "brand": "Laphroaig",
       "category": "islay",
       "searchTermJP": "ラフロイグ 10年",
-      "changi": { "priceSGD": 108.00, "volumeML": 1000, "available": true, "notes": "1000ml (면세점 한정)", "verifiedDate": "2026-03" },
-      "japan": { "priceJPY": 5035, "volumeML": 700, "verifiedDate": "2026-03" }
+      "changi": {
+        "priceSGD": 145.6,
+        "volumeML": 1000,
+        "available": true,
+        "notes": "1000ml (면세점 한정)",
+        "verifiedDate": "2026-03-19"
+      },
+      "japan": {
+        "priceJPY": 5035,
+        "volumeML": 700,
+        "verifiedDate": "2026-03"
+      }
     },
     {
       "id": "laphroaig-qc",
@@ -73,8 +133,18 @@
       "brand": "Laphroaig",
       "category": "islay",
       "searchTermJP": "ラフロイグ クォーターカスク",
-      "changi": { "priceSGD": null, "volumeML": 700, "available": false, "notes": "창이 미판매", "verifiedDate": "2026-03" },
-      "japan": { "priceJPY": 7780, "volumeML": 700, "verifiedDate": "2026-03" }
+      "changi": {
+        "priceSGD": null,
+        "volumeML": 700,
+        "available": false,
+        "notes": "창이 미판매",
+        "verifiedDate": "2026-03"
+      },
+      "japan": {
+        "priceJPY": 7780,
+        "volumeML": 700,
+        "verifiedDate": "2026-03"
+      }
     },
     {
       "id": "ardbeg-10",
@@ -83,8 +153,18 @@
       "brand": "Ardbeg",
       "category": "islay",
       "searchTermJP": "アードベッグ 10年",
-      "changi": { "priceSGD": 85.00, "volumeML": 1000, "available": true, "notes": "1000ml (면세점 한정)", "verifiedDate": "2026-03" },
-      "japan": { "priceJPY": 5049, "volumeML": 700, "verifiedDate": "2026-03" }
+      "changi": {
+        "priceSGD": 85,
+        "volumeML": 1000,
+        "available": true,
+        "notes": "1000ml (면세점 한정)",
+        "verifiedDate": "2026-03-19"
+      },
+      "japan": {
+        "priceJPY": 5049,
+        "volumeML": 700,
+        "verifiedDate": "2026-03"
+      }
     },
     {
       "id": "ardbeg-uigeadail",
@@ -93,8 +173,18 @@
       "brand": "Ardbeg",
       "category": "islay",
       "searchTermJP": "アードベッグ ウーガダール",
-      "changi": { "priceSGD": null, "volumeML": 700, "available": false, "notes": "창이 미판매", "verifiedDate": "2026-03" },
-      "japan": { "priceJPY": 9631, "volumeML": 700, "verifiedDate": "2026-03" }
+      "changi": {
+        "priceSGD": null,
+        "volumeML": 700,
+        "available": false,
+        "notes": "창이 미판매",
+        "verifiedDate": "2026-03"
+      },
+      "japan": {
+        "priceJPY": 9631,
+        "volumeML": 700,
+        "verifiedDate": "2026-03"
+      }
     },
     {
       "id": "redbreast-12",
@@ -103,8 +193,18 @@
       "brand": "Redbreast",
       "category": "irish",
       "searchTermJP": "レッドブレスト 12年",
-      "changi": { "priceSGD": 115.00, "volumeML": 700, "available": true, "notes": "", "verifiedDate": "2026-03" },
-      "japan": { "priceJPY": 6500, "volumeML": 700, "verifiedDate": "2026-03" }
+      "changi": {
+        "priceSGD": 69.7,
+        "volumeML": 700,
+        "available": true,
+        "notes": "",
+        "verifiedDate": "2026-03-19"
+      },
+      "japan": {
+        "priceJPY": 6500,
+        "volumeML": 700,
+        "verifiedDate": "2026-03"
+      }
     },
     {
       "id": "aultmore-12",
@@ -113,8 +213,18 @@
       "brand": "Aultmore",
       "category": "speyside",
       "searchTermJP": "オルトモア 12年",
-      "changi": { "priceSGD": 60.00, "volumeML": 500, "available": true, "notes": "500ml EXCLUSIVE (면세점 한정)", "verifiedDate": "2026-03" },
-      "japan": { "priceJPY": 6210, "volumeML": 700, "verifiedDate": "2026-03" }
+      "changi": {
+        "priceSGD": 60,
+        "volumeML": 500,
+        "available": true,
+        "notes": "500ml EXCLUSIVE (면세점 한정)",
+        "verifiedDate": "2026-03-19"
+      },
+      "japan": {
+        "priceJPY": 6210,
+        "volumeML": 700,
+        "verifiedDate": "2026-03"
+      }
     },
     {
       "id": "bowmore-12",
@@ -123,8 +233,18 @@
       "brand": "Bowmore",
       "category": "islay",
       "searchTermJP": "ボウモア 12年",
-      "changi": { "priceSGD": 95.00, "volumeML": 700, "available": true, "notes": "", "verifiedDate": "2026-03" },
-      "japan": { "priceJPY": 4100, "volumeML": 700, "verifiedDate": "2026-03" }
+      "changi": {
+        "priceSGD": 95,
+        "volumeML": 700,
+        "available": true,
+        "notes": "",
+        "verifiedDate": "2026-03"
+      },
+      "japan": {
+        "priceJPY": 4100,
+        "volumeML": 700,
+        "verifiedDate": "2026-03"
+      }
     },
     {
       "id": "glenfiddich-12",
@@ -133,8 +253,18 @@
       "brand": "Glenfiddich",
       "category": "speyside",
       "searchTermJP": "グレンフィディック 12年",
-      "changi": { "priceSGD": 110.00, "volumeML": 700, "available": true, "notes": "", "verifiedDate": "2026-03" },
-      "japan": { "priceJPY": 4608, "volumeML": 700, "verifiedDate": "2026-03" }
+      "changi": {
+        "priceSGD": 312,
+        "volumeML": 700,
+        "available": true,
+        "notes": "",
+        "verifiedDate": "2026-03-19"
+      },
+      "japan": {
+        "priceJPY": 4608,
+        "volumeML": 700,
+        "verifiedDate": "2026-03"
+      }
     },
     {
       "id": "glenlivet-12",
@@ -143,8 +273,18 @@
       "brand": "Glenlivet",
       "category": "speyside",
       "searchTermJP": "グレンリベット 12年",
-      "changi": { "priceSGD": 75.00, "volumeML": 700, "available": true, "notes": "", "verifiedDate": "2026-03" },
-      "japan": { "priceJPY": 4513, "volumeML": 700, "verifiedDate": "2026-03" }
+      "changi": {
+        "priceSGD": 75,
+        "volumeML": 700,
+        "available": true,
+        "notes": "",
+        "verifiedDate": "2026-03"
+      },
+      "japan": {
+        "priceJPY": 4513,
+        "volumeML": 700,
+        "verifiedDate": "2026-03"
+      }
     },
     {
       "id": "highland-park-12",
@@ -153,8 +293,18 @@
       "brand": "Highland Park",
       "category": "island",
       "searchTermJP": "ハイランドパーク 12年",
-      "changi": { "priceSGD": 88.00, "volumeML": 700, "available": true, "notes": "", "verifiedDate": "2026-03" },
-      "japan": { "priceJPY": 4680, "volumeML": 700, "verifiedDate": "2026-03" }
+      "changi": {
+        "priceSGD": 88,
+        "volumeML": 700,
+        "available": true,
+        "notes": "",
+        "verifiedDate": "2026-03"
+      },
+      "japan": {
+        "priceJPY": 4680,
+        "volumeML": 700,
+        "verifiedDate": "2026-03"
+      }
     },
     {
       "id": "talisker-10",
@@ -163,8 +313,18 @@
       "brand": "Talisker",
       "category": "island",
       "searchTermJP": "タリスカー 10年",
-      "changi": { "priceSGD": 85.00, "volumeML": 700, "available": true, "notes": "", "verifiedDate": "2026-03" },
-      "japan": { "priceJPY": 4350, "volumeML": 700, "verifiedDate": "2026-03" }
+      "changi": {
+        "priceSGD": 85,
+        "volumeML": 700,
+        "available": true,
+        "notes": "",
+        "verifiedDate": "2026-03"
+      },
+      "japan": {
+        "priceJPY": 4350,
+        "volumeML": 700,
+        "verifiedDate": "2026-03"
+      }
     },
     {
       "id": "oban-14",
@@ -173,8 +333,18 @@
       "brand": "Oban",
       "category": "highland",
       "searchTermJP": "オーバン 14年",
-      "changi": { "priceSGD": 115.00, "volumeML": 700, "available": true, "notes": "", "verifiedDate": "2026-03" },
-      "japan": { "priceJPY": 6800, "volumeML": 700, "verifiedDate": "2026-03" }
+      "changi": {
+        "priceSGD": 151,
+        "volumeML": 700,
+        "available": true,
+        "notes": "",
+        "verifiedDate": "2026-03-19"
+      },
+      "japan": {
+        "priceJPY": 6800,
+        "volumeML": 700,
+        "verifiedDate": "2026-03"
+      }
     }
   ]
 }
