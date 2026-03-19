@@ -38,7 +38,7 @@ async function searchYahoo(page, searchTerm) {
     // 검색어에서 브랜드명을 추출 (첫 번째 토큰 = 브랜드명)
     const brandKeyword = searchTerm.split(/\s+/)[0]; // e.g. "ラフロイグ", "マッカラン"
 
-    const results = await page.evaluate((min, brand) => {
+    const results = await page.evaluate(({ min, brand }) => {
       const items_found = [];
 
       // Yahoo Shopping 검색 결과 아이템 단위로 처리
@@ -99,7 +99,7 @@ async function searchYahoo(page, searchTerm) {
       }
 
       return items_found;
-    }, MIN_PRICE, brandKeyword);
+    }, { min: MIN_PRICE, brand: brandKeyword });
 
     if (results.length > 0) {
       // 배송료 포함 총액 기준 최저가 아이템 찾기
