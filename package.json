@@ -1,6 +1,6 @@
 {
   "name": "diff-whisky-price",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Whisky price comparison: Singapore Changi Airport Duty-Free vs Japan Market",
   "engines": {
     "node": ">=18"
@@ -8,6 +8,11 @@
   "scripts": {
     "dev": "netlify dev",
     "sync-data": "cp data/whiskies.json public/data.json",
-    "update-prices": "node scripts/update-japan-prices.mjs && npm run sync-data"
+    "update-changi": "node scripts/update-changi-prices.mjs && npm run sync-data",
+    "update-japan": "node scripts/update-japan-prices.mjs && npm run sync-data",
+    "update-all": "node scripts/update-changi-prices.mjs && node scripts/update-japan-prices.mjs && npm run sync-data"
+  },
+  "dependencies": {
+    "playwright": "^1.52.0"
   }
 }
