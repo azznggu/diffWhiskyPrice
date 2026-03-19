@@ -1,0 +1,11 @@
+{
+  "name": "diff-whisky-price",
+  "version": "1.0.0",
+  "description": "Whisky price comparison: Singapore Changi Airport Duty-Free vs Japan Market",
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "dev": "netlify dev"
+  }
+}
