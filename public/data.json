@@ -2,7 +2,7 @@
   "meta": {
     "lastUpdated": "2026-03-19",
     "changiSource": "iShopChangi.com (Traveller mode, auto-scraped)",
-    "japanSource": "kakaku.com / rakuten.co.jp (最安値)",
+    "japanSource": "rakuten.co.jp / shopping.yahoo.co.jp (最安値)",
     "notes": "싱글몰트 위스키 중심. 창이 가격은 여행자(면세) 모드 기준. 일본 가격은 kakaku.com 최저가."
   },
   "products": [
@@ -14,16 +14,17 @@
       "category": "speyside",
       "searchTermJP": "マッカラン 12年 ダブルカスク",
       "changi": {
-        "priceSGD": 102.2,
+        "priceSGD": null,
         "volumeML": 700,
-        "available": true,
-        "notes": "Colour Collection 12yr",
-        "verifiedDate": "2026-03"
+        "available": false,
+        "notes": "자동 스크래핑 미발견",
+        "verifiedDate": "2026-03-19"
       },
       "japan": {
-        "priceJPY": 8397,
+        "priceJPY": 1370,
         "volumeML": 700,
-        "verifiedDate": "2026-03"
+        "verifiedDate": "2026-03-19",
+        "source": "rakuten:¥1,370 / yahoo:¥2,000"
       }
     },
     {
@@ -37,13 +38,14 @@
         "priceSGD": null,
         "volumeML": 700,
         "available": false,
-        "notes": "Traveller모드 미판매 (Non-Traveller S$160)",
-        "verifiedDate": "2026-03"
+        "notes": "자동 스크래핑 미발견",
+        "verifiedDate": "2026-03-19"
       },
       "japan": {
-        "priceJPY": 11297,
+        "priceJPY": 1049,
         "volumeML": 700,
-        "verifiedDate": "2026-03"
+        "verifiedDate": "2026-03-19",
+        "source": "rakuten:¥1,049 / yahoo:¥1,200"
       }
     },
     {
@@ -57,13 +59,14 @@
         "priceSGD": null,
         "volumeML": 700,
         "available": false,
-        "notes": "Traveller모드 미판매 (Non-Traveller S$480)",
-        "verifiedDate": "2026-03"
+        "notes": "자동 스크래핑 미발견",
+        "verifiedDate": "2026-03-19"
       },
       "japan": {
-        "priceJPY": 41129,
+        "priceJPY": 1320,
         "volumeML": 700,
-        "verifiedDate": "2026-03"
+        "verifiedDate": "2026-03-19",
+        "source": "rakuten:¥1,320 / yahoo:¥13,980"
       }
     },
     {
@@ -74,16 +77,17 @@
       "category": "islay",
       "searchTermJP": "ラガヴーリン 16年",
       "changi": {
-        "priceSGD": 129.7,
+        "priceSGD": null,
         "volumeML": 700,
-        "available": true,
-        "notes": "",
-        "verifiedDate": "2026-03"
+        "available": false,
+        "notes": "자동 스크래핑 미발견",
+        "verifiedDate": "2026-03-19"
       },
       "japan": {
-        "priceJPY": 9790,
+        "priceJPY": 1250,
         "volumeML": 700,
-        "verifiedDate": "2026-03"
+        "verifiedDate": "2026-03-19",
+        "source": "rakuten:¥1,720 / yahoo:¥1,250"
       }
     },
     {
@@ -94,16 +98,17 @@
       "category": "islay",
       "searchTermJP": "ラガヴーリン 8年",
       "changi": {
-        "priceSGD": 138,
+        "priceSGD": null,
         "volumeML": 700,
-        "available": true,
-        "notes": "",
-        "verifiedDate": "2026-03"
+        "available": false,
+        "notes": "자동 스크래핑 미발견",
+        "verifiedDate": "2026-03-19"
       },
       "japan": {
-        "priceJPY": 6050,
+        "priceJPY": 1056,
         "volumeML": 700,
-        "verifiedDate": "2026-03"
+        "verifiedDate": "2026-03-19",
+        "source": "rakuten:¥1,056 / yahoo:¥1,780"
       }
     },
     {
@@ -121,9 +126,10 @@
         "verifiedDate": "2026-03-19"
       },
       "japan": {
-        "priceJPY": 5035,
+        "priceJPY": 1157,
         "volumeML": 700,
-        "verifiedDate": "2026-03"
+        "verifiedDate": "2026-03-19",
+        "source": "rakuten:¥1,157 / yahoo:¥1,910"
       }
     },
     {
@@ -137,13 +143,14 @@
         "priceSGD": null,
         "volumeML": 700,
         "available": false,
-        "notes": "창이 미판매",
-        "verifiedDate": "2026-03"
+        "notes": "자동 스크래핑 미발견",
+        "verifiedDate": "2026-03-19"
       },
       "japan": {
-        "priceJPY": 7780,
+        "priceJPY": 1056,
         "volumeML": 700,
-        "verifiedDate": "2026-03"
+        "verifiedDate": "2026-03-19",
+        "source": "rakuten:¥1,056 / yahoo:¥5,368"
       }
     },
     {
@@ -161,9 +168,10 @@
         "verifiedDate": "2026-03-19"
       },
       "japan": {
-        "priceJPY": 5049,
+        "priceJPY": 1056,
         "volumeML": 700,
-        "verifiedDate": "2026-03"
+        "verifiedDate": "2026-03-19",
+        "source": "rakuten:¥1,056 / yahoo:¥1,660"
       }
     },
     {
@@ -177,13 +185,14 @@
         "priceSGD": null,
         "volumeML": 700,
         "available": false,
-        "notes": "창이 미판매",
-        "verifiedDate": "2026-03"
+        "notes": "자동 스크래핑 미발견",
+        "verifiedDate": "2026-03-19"
       },
       "japan": {
-        "priceJPY": 9631,
+        "priceJPY": 1051,
         "volumeML": 700,
-        "verifiedDate": "2026-03"
+        "verifiedDate": "2026-03-19",
+        "source": "rakuten:¥1,051 / yahoo:¥2,610"
       }
     },
     {
@@ -201,9 +210,10 @@
         "verifiedDate": "2026-03-19"
       },
       "japan": {
-        "priceJPY": 6500,
+        "priceJPY": 1080,
         "volumeML": 700,
-        "verifiedDate": "2026-03"
+        "verifiedDate": "2026-03-19",
+        "source": "rakuten:¥1,080 / yahoo:¥5,990"
       }
     },
     {
@@ -221,9 +231,10 @@
         "verifiedDate": "2026-03-19"
       },
       "japan": {
-        "priceJPY": 6210,
+        "priceJPY": 1056,
         "volumeML": 700,
-        "verifiedDate": "2026-03"
+        "verifiedDate": "2026-03-19",
+        "source": "rakuten:¥1,056 / yahoo:¥6,210"
       }
     },
     {
@@ -234,16 +245,17 @@
       "category": "islay",
       "searchTermJP": "ボウモア 12年",
       "changi": {
-        "priceSGD": 95,
+        "priceSGD": null,
         "volumeML": 700,
-        "available": true,
-        "notes": "",
-        "verifiedDate": "2026-03"
+        "available": false,
+        "notes": "자동 스크래핑 미발견",
+        "verifiedDate": "2026-03-19"
       },
       "japan": {
-        "priceJPY": 4100,
+        "priceJPY": 1070,
         "volumeML": 700,
-        "verifiedDate": "2026-03"
+        "verifiedDate": "2026-03-19",
+        "source": "rakuten:¥1,070 / yahoo:¥1,280"
       }
     },
     {
@@ -261,9 +273,10 @@
         "verifiedDate": "2026-03-19"
       },
       "japan": {
-        "priceJPY": 4608,
+        "priceJPY": 1040,
         "volumeML": 700,
-        "verifiedDate": "2026-03"
+        "verifiedDate": "2026-03-19",
+        "source": "rakuten:¥1,040 / yahoo:¥1,310"
       }
     },
     {
@@ -274,16 +287,17 @@
       "category": "speyside",
       "searchTermJP": "グレンリベット 12年",
       "changi": {
-        "priceSGD": 75,
+        "priceSGD": null,
         "volumeML": 700,
-        "available": true,
-        "notes": "",
-        "verifiedDate": "2026-03"
+        "available": false,
+        "notes": "자동 스크래핑 미발견",
+        "verifiedDate": "2026-03-19"
       },
       "japan": {
-        "priceJPY": 4513,
+        "priceJPY": 1056,
         "volumeML": 700,
-        "verifiedDate": "2026-03"
+        "verifiedDate": "2026-03-19",
+        "source": "rakuten:¥1,056 / yahoo:¥1,340"
       }
     },
     {
@@ -294,16 +308,17 @@
       "category": "island",
       "searchTermJP": "ハイランドパーク 12年",
       "changi": {
-        "priceSGD": 88,
+        "priceSGD": null,
         "volumeML": 700,
-        "available": true,
-        "notes": "",
-        "verifiedDate": "2026-03"
+        "available": false,
+        "notes": "자동 스크래핑 미발견",
+        "verifiedDate": "2026-03-19"
       },
       "japan": {
-        "priceJPY": 4680,
+        "priceJPY": 1050,
         "volumeML": 700,
-        "verifiedDate": "2026-03"
+        "verifiedDate": "2026-03-19",
+        "source": "rakuten:¥1,050 / yahoo:¥1,660"
       }
     },
     {
@@ -314,16 +329,17 @@
       "category": "island",
       "searchTermJP": "タリスカー 10年",
       "changi": {
-        "priceSGD": 85,
+        "priceSGD": null,
         "volumeML": 700,
-        "available": true,
-        "notes": "",
-        "verifiedDate": "2026-03"
+        "available": false,
+        "notes": "자동 스크래핑 미발견",
+        "verifiedDate": "2026-03-19"
       },
       "japan": {
-        "priceJPY": 4350,
+        "priceJPY": 1100,
         "volumeML": 700,
-        "verifiedDate": "2026-03"
+        "verifiedDate": "2026-03-19",
+        "source": "rakuten:¥1,100 / yahoo:¥1,400"
       }
     },
     {
@@ -341,9 +357,10 @@
         "verifiedDate": "2026-03-19"
       },
       "japan": {
-        "priceJPY": 6800,
+        "priceJPY": 1003,
         "volumeML": 700,
-        "verifiedDate": "2026-03"
+        "verifiedDate": "2026-03-19",
+        "source": "rakuten:¥1,003 / yahoo:¥2,480"
       }
     }
   ]
