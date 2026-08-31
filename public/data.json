@@ -1,6 +1,6 @@
 {
   "meta": {
-    "lastUpdated": "2026-08-30",
+    "lastUpdated": "2026-08-31",
     "changiSource": "iShopChangi.com (Traveller mode, auto-scraped)",
     "japanSource": "shopping.yahoo.co.jp (最安値)"
   },
@@ -16,14 +16,14 @@
         "priceSGD": null,
         "volumeML": 700,
         "available": false,
-        "verifiedDate": "2026-08-30",
+        "verifiedDate": "2026-08-31",
         "sourceUrl": null,
         "notes": "자동 스크래핑 미발견"
       },
       "japan": {
         "priceJPY": 12100,
         "volumeML": 700,
-        "verifiedDate": "2026-08-30",
+        "verifiedDate": "2026-08-31",
         "source": "yahoo:¥12,100",
         "sourceUrl": "https://store.shopping.yahoo.co.jp/axas-co/alokh-5010314312411.html?sc_i=shopping-pc-web-result-item-rsltlst-title",
         "shippingJPY": 0,
@@ -42,14 +42,14 @@
         "priceSGD": null,
         "volumeML": 700,
         "available": false,
-        "verifiedDate": "2026-08-30",
+        "verifiedDate": "2026-08-31",
         "sourceUrl": null,
         "notes": "자동 스크래핑 미발견"
       },
       "japan": {
         "priceJPY": 57998,
         "volumeML": 700,
-        "verifiedDate": "2026-08-30",
+        "verifiedDate": "2026-08-31",
         "source": "yahoo:¥57,998",
         "sourceUrl": "https://store.shopping.yahoo.co.jp/enokishouten/7x-lyyk-82ps.html?sc_i=shopping-pc-web-result-item-rsltlst-title",
         "shippingJPY": 0,
@@ -68,19 +68,19 @@
         "priceSGD": null,
         "volumeML": 700,
         "available": false,
-        "verifiedDate": "2026-08-30",
+        "verifiedDate": "2026-08-31",
         "sourceUrl": null,
         "notes": "자동 스크래핑 미발견"
       },
       "japan": {
-        "priceJPY": 10998,
+        "priceJPY": 9800,
         "volumeML": 700,
-        "verifiedDate": "2026-08-30",
-        "source": "yahoo:¥10,998",
-        "sourceUrl": "https://store.shopping.yahoo.co.jp/enokishouten/ng-oqg6-5jc4.html?sc_i=shopping-pc-web-result-item-rsltlst-title",
-        "shippingJPY": 0,
-        "totalJPY": 10998,
-        "productTitle": "ラガヴーリン 16年 700ml シングルモルト ウイスキー 43度 正規品 箱付 送料無料 宅飲み 洋酒  晩酌"
+        "verifiedDate": "2026-08-31",
+        "source": "yahoo:¥9,800",
+        "sourceUrl": "https://store.shopping.yahoo.co.jp/licasta/lagavulin-16yo-outlet.html?sc_i=shopping-pc-web-result-item-rsltlst-title",
+        "shippingJPY": 880,
+        "totalJPY": 10680,
+        "productTitle": "ラガヴーリン 16年 スコッチウイスキー アイラ 正規品 700ml 箱無し アウトレット 店頭受取可能   残暑見舞い ギフト お酒"
       }
     },
     {
@@ -94,14 +94,14 @@
         "priceSGD": null,
         "volumeML": 700,
         "available": false,
-        "verifiedDate": "2026-08-30",
+        "verifiedDate": "2026-08-31",
         "sourceUrl": null,
         "notes": "자동 스크래핑 미발견"
       },
       "japan": {
         "priceJPY": 3998,
         "volumeML": 700,
-        "verifiedDate": "2026-08-30",
+        "verifiedDate": "2026-08-31",
         "source": "yahoo:¥3,998",
         "sourceUrl": null,
         "shippingJPY": 0,
@@ -120,14 +120,14 @@
         "priceSGD": null,
         "volumeML": 1000,
         "available": false,
-        "verifiedDate": "2026-08-30",
+        "verifiedDate": "2026-08-31",
         "sourceUrl": null,
         "notes": "자동 스크래핑 미발견"
       },
       "japan": {
         "priceJPY": 5021,
         "volumeML": 700,
-        "verifiedDate": "2026-08-30",
+        "verifiedDate": "2026-08-31",
         "source": "yahoo:¥5,021",
         "sourceUrl": "https://store.shopping.yahoo.co.jp/e-felicity/3-laphroaig-vt10-40-h.html?sc_i=shopping-pc-web-result-item-rsltlst-title",
         "shippingJPY": 598,
@@ -146,14 +146,14 @@
         "priceSGD": null,
         "volumeML": 700,
         "available": false,
-        "verifiedDate": "2026-08-30",
+        "verifiedDate": "2026-08-31",
         "sourceUrl": null,
         "notes": "자동 스크래핑 미발견"
       },
       "japan": {
         "priceJPY": 2540,
         "volumeML": 700,
-        "verifiedDate": "2026-08-30",
+        "verifiedDate": "2026-08-31",
         "source": "yahoo:¥2,540",
         "sourceUrl": null,
         "shippingJPY": 1000,
@@ -172,14 +172,14 @@
         "priceSGD": null,
         "volumeML": 1000,
         "available": false,
-        "verifiedDate": "2026-08-30",
+        "verifiedDate": "2026-08-31",
         "sourceUrl": null,
         "notes": "자동 스크래핑 미발견"
       },
       "japan": {
         "priceJPY": 4950,
         "volumeML": 700,
-        "verifiedDate": "2026-08-30",
+        "verifiedDate": "2026-08-31",
         "source": "yahoo:¥4,950",
         "sourceUrl": "https://store.shopping.yahoo.co.jp/whisky/512061.html?sc_i=shopping-pc-web-result-item-rsltlst-title",
         "shippingJPY": 598,
@@ -198,16 +198,16 @@
         "priceSGD": null,
         "volumeML": 700,
         "available": false,
-        "verifiedDate": "2026-08-30",
+        "verifiedDate": "2026-08-31",
         "sourceUrl": null,
         "notes": "자동 스크래핑 미발견"
       },
       "japan": {
         "priceJPY": 6198,
         "volumeML": 700,
-        "verifiedDate": "2026-08-30",
+        "verifiedDate": "2026-08-31",
         "source": "yahoo:¥6,198",
-        "sourceUrl": "https://store.shopping.yahoo.co.jp/felicity-y/3-red-b-12.html?sc_i=shopping-pc-web-result-item-rsltlst-title",
+        "sourceUrl": "https://store.shopping.yahoo.co.jp/felicity-02/3-red-b-12.html?sc_i=shopping-pc-web-result-item-rsltlst-title",
         "shippingJPY": 598,
         "totalJPY": 6796,
         "productTitle": "ウイスキー レッドブレスト 12年 40度 正規 箱付 700ml アイリッシュ 洋酒"
@@ -224,14 +224,14 @@
         "priceSGD": null,
         "volumeML": 500,
         "available": false,
-        "verifiedDate": "2026-08-30",
+        "verifiedDate": "2026-08-31",
         "sourceUrl": null,
         "notes": "자동 스크래핑 미발견"
       },
       "japan": {
         "priceJPY": 6600,
         "volumeML": 700,
-        "verifiedDate": "2026-08-30",
+        "verifiedDate": "2026-08-31",
         "source": "yahoo:¥6,600",
         "sourceUrl": "https://store.shopping.yahoo.co.jp/osakehonpo/aultmore12y-700ml.html?sc_i=shopping-pc-web-result-item-rsltlst-title",
         "shippingJPY": 1190,
@@ -250,14 +250,14 @@
         "priceSGD": null,
         "volumeML": 700,
         "available": false,
-        "verifiedDate": "2026-08-30",
+        "verifiedDate": "2026-08-31",
         "sourceUrl": null,
         "notes": "자동 스크래핑 미발견"
       },
       "japan": {
         "priceJPY": 7930,
         "volumeML": 700,
-        "verifiedDate": "2026-08-30",
+        "verifiedDate": "2026-08-31",
         "source": "yahoo:¥7,930",
         "sourceUrl": "https://store.shopping.yahoo.co.jp/sakaeya-honten-ima/bowmore11.html?sc_i=shopping-pc-web-result-item-rsltlst-title",
         "shippingJPY": 900,
@@ -276,14 +276,14 @@
         "priceSGD": null,
         "volumeML": 1000,
         "available": false,
-        "verifiedDate": "2026-08-30",
+        "verifiedDate": "2026-08-31",
         "sourceUrl": null,
         "notes": "자동 스크래핑 미발견"
       },
       "japan": {
         "priceJPY": null,
         "volumeML": 700,
-        "verifiedDate": "2026-08-30",
+        "verifiedDate": "2026-08-31",
         "source": "yahoo:미발견",
         "sourceUrl": null,
         "shippingJPY": 0,
@@ -302,14 +302,14 @@
         "priceSGD": null,
         "volumeML": 700,
         "available": false,
-        "verifiedDate": "2026-08-30",
+        "verifiedDate": "2026-08-31",
         "sourceUrl": null,
         "notes": "자동 스크래핑 미발견"
       },
       "japan": {
         "priceJPY": 3980,
         "volumeML": 700,
-        "verifiedDate": "2026-08-30",
+        "verifiedDate": "2026-08-31",
         "source": "yahoo:¥3,980",
         "sourceUrl": null,
         "shippingJPY": 800,
@@ -328,19 +328,19 @@
         "priceSGD": null,
         "volumeML": 1000,
         "available": false,
-        "verifiedDate": "2026-08-30",
+        "verifiedDate": "2026-08-31",
         "sourceUrl": null,
         "notes": "자동 스크래핑 미발견"
       },
       "japan": {
-        "priceJPY": 5170,
+        "priceJPY": 5280,
         "volumeML": 700,
-        "verifiedDate": "2026-08-30",
-        "source": "yahoo:¥5,170",
-        "sourceUrl": "https://store.shopping.yahoo.co.jp/felicity-02/3-talisker-vt10-dcf.html?sc_i=shopping-pc-web-result-item-rsltlst-title",
+        "verifiedDate": "2026-08-31",
+        "source": "yahoo:¥5,280",
+        "sourceUrl": "https://store.shopping.yahoo.co.jp/liquors-best/101160301.html?sc_i=shopping-pc-web-result-item-rsltlst-title",
         "shippingJPY": 0,
-        "totalJPY": 5170,
-        "productTitle": "送料無料 ウイスキー タリスカー 10年 45.8度 正規 箱付 700ml"
+        "totalJPY": 5280,
+        "productTitle": "◆1本で送料無料！正規品 タリスカー 10年 45.8度 700ml箱付き_[北海道・沖縄県・クール便は送料無料対象外] シングルモルト 洋酒 whisky_爆買"
       }
     },
     {
@@ -354,14 +354,14 @@
         "priceSGD": null,
         "volumeML": 700,
         "available": false,
-        "verifiedDate": "2026-08-30",
+        "verifiedDate": "2026-08-31",
         "sourceUrl": null,
         "notes": "자동 스크래핑 미발견"
       },
       "japan": {
         "priceJPY": 8180,
         "volumeML": 700,
-        "verifiedDate": "2026-08-30",
+        "verifiedDate": "2026-08-31",
         "source": "yahoo:¥8,180",
         "sourceUrl": "https://store.shopping.yahoo.co.jp/chiyomatsu/sk794-oban14.html?sc_i=shopping-pc-web-result-item-rsltlst-title",
         "shippingJPY": 890,
