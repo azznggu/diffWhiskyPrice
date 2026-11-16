@@ -71,9 +71,24 @@ async function scrapeBrandPage(page, brand, brandPath) {
       return [];
     }
 
-    // SPA 렌더링 대기
-    await page.waitForSelector('.product-tile-medium-wrapper, .product-listing, [class*="product-tile"]', { timeout: 15000 }).catch(() => {});
-    await sleep(3000);
+    // SPA 렌더링 대기 — 개편된 DOM: 상품 카드는 a[data-test-id="products"]
+    await page.waitForSelector('a[data-test-id="products"]', { timeout: 30000 }).catch(() => {});
+    // Traveller 모드 컬렉션으로 전환될 때까지 대기 (가격이 여행자 기준이 됨)
+    await page.waitForFunction(() => {
+      const a = document.querySelector('a[data-test-id="products"]');
+      return a && /HOMEDELIVERYTRAVELLER|DEPARTURE|ARRIVAL/.test(a.getAttribute('href') || '');
+    }, { timeout: 15000 }).catch(() => {});
+    await sleep(2000);
+
+    // lazy-load 유도: 천천히 끝까지 스크롤
+    await page.evaluate(async () => {
+      for (let y = 0; y < document.body.scrollHeight; y += 600) {
+        window.scrollTo(0, y);
+        await new Promise(r => setTimeout(r, 250));
+      }
+      window.scrollTo(0, 0);
+    });
+    await sleep(1500);
 
     // "Load More" 버튼 클릭
     let loadMoreClicks = 0;
@@ -85,30 +100,28 @@ async function scrapeBrandPage(page, brand, brandPath) {
       loadMoreClicks++;
     }
 
-    // 제품 정보 추출
+    // 제품 정보 추출 — 카드(앵커) 단위: data-linkname = 상품명, 텍스트에서 S$ 가격
     const products = await page.evaluate(() => {
       const results = [];
-      const tiles = document.querySelectorAll('.product-tile-medium-wrapper, [class*="product-tile"], [class*="ProductTile"]');
-      for (const tile of tiles) {
-        const text = tile.textContent || '';
+      const seen = new Set();
+      const cards = document.querySelectorAll('a[data-test-id="products"]');
+      for (const card of cards) {
+        const href = card.getAttribute('href');
+        if (!href) continue;
+        const key = href.split('?')[0];
+        if (seen.has(key)) continue;
+        seen.add(key);
 
-        // 가격 추출: S$XXX.XX 패턴
+        const name = card.getAttribute('data-linkname') || (card.textContent || '').trim();
+        const text = card.textContent || '';
         const priceMatches = text.match(/S\$\s*([\d,]+(?:\.\d{2})?)/g);
         let price = null;
         if (priceMatches) {
           const prices = priceMatches.map(p => parseFloat(p.replace('S$', '').replace(/,/g, '').trim()));
           price = Math.min(...prices);
         }
-
-        // 상품 링크 추출
-        const linkEl = tile.querySelector('a[href*="/en/"]') || tile.querySelector('a[href]');
-        let href = linkEl ? linkEl.getAttribute('href') : null;
-        if (href && !href.startsWith('http')) {
-          href = 'https://www.ishopchangi.com' + href;
-        }
-
         if (price) {
-          results.push({ name: text.trim().substring(0, 200), price, url: href });
+          results.push({ name: name.trim(), price, url: 'https://www.ishopchangi.com' + key });
         }
       }
       return results;

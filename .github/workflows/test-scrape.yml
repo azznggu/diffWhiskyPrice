@@ -1,8 +1,8 @@
-name: Probe DOM
+name: Test Scrape
 on:
   workflow_dispatch:
 jobs:
-  probe:
+  test:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -11,4 +11,7 @@ jobs:
           node-version: '22'
       - run: npm ci
       - run: npx playwright install chromium --with-deps
-      - run: node scripts/probe-dom.mjs
+      - run: node scripts/update-changi-prices.mjs
+      - run: node scripts/update-japan-prices.mjs
+      - name: Show data diff
+        run: git diff data/whiskies.json | head -200
