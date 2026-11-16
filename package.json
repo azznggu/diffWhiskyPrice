@@ -13,6 +13,6 @@
     "update-all": "node scripts/update-changi-prices.mjs && node scripts/update-japan-prices.mjs && npm run sync-data"
   },
   "dependencies": {
-    "playwright": "^1.52.0"
+    "playwright": "^1.65.1"
   }
 }
